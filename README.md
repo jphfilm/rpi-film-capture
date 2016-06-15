@@ -23,4 +23,4 @@ Optimizations for Ease of Use:
 * 'Smart capture' features to adjust to dramatic lighting changes (under development)
 * Entire system can be moved easily from one projector to another to change film gauges.
 
-See the [wiki](wiki/Home.md) for complete documentation, including a manual, wiring diagrams, and hardware selection tips for your own project.
+See the [wiki](./wiki/Home.md) for complete documentation, including a manual, wiring diagrams, and hardware selection tips for your own project.
