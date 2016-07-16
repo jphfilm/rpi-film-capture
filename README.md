@@ -23,9 +23,9 @@ Optimizations for Quality:
 Optimizations for Usability:
 * 'Setup Mode' allows for precise adjustment of camera before starting capture.
 * Near-real-time view of captured images.
+<img  align="right" src="images/pifilm-advanced.png">
 * Save/load settings, e.g. for different film types or projector setups.
 * 'Smart capture' features to adjust to dramatic lighting changes (under development)
-<img  align="right" src="images/pifilm-advanced.png">
 * Entire system can be moved between projectors to another to change film gauges.
 
 See the [wiki](https://github.com/jphfilm/rpi-film-capture/wiki)(still under construction) for complete documentation, including a manual, wiring diagrams, and hardware selection tips for your own project.
