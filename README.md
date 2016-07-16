@@ -29,3 +29,7 @@ Optimizations for Usability:
 See the [wiki](https://github.com/jphfilm/rpi-film-capture/wiki)(still under construction) for complete documentation, including a manual, wiring diagrams, and hardware selection tips for your own project.
 
 Demonstration video, samples, and comparison w/ direct capture at speed available on my [YouTube channel](https://www.youtube.com/channel/UCQi6WqZvf4OT9eOhWeVfKMg).
+<div style="float: right;" ><img src="images/pifilm-setup.png">
+<img style="float: right;" src="images/pifilm-capture.png">
+<img style="float: right;" src="images/pifilm-advanced.png">
+</div>
