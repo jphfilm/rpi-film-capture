@@ -2,6 +2,7 @@
 
 <img align="right" src="images/pifilm-setup.png">
 A project to perform frame-by-frame capture of 8mm and 16mm films using a raspberry pi, the pi camera, and a modified movie projector. 
+<img src="images/super8setup.jpg" width="480">
 
 Design:
 * Film transport is via a repurposed projector (8mm, Super8, or 16mm), driven by a stepper motor. 
@@ -32,4 +33,4 @@ See the [wiki](https://github.com/jphfilm/rpi-film-capture/wiki)(still under con
 
 Demonstration video, samples, and comparison w/ direct capture at speed available on my [YouTube channel](https://www.youtube.com/channel/UCQi6WqZvf4OT9eOhWeVfKMg).
 <img  align="right"src="images/pifilm-capture.png">
-<img  align="left"src="images/super8setup.jpg" width="400">
+
