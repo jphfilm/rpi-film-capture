@@ -1,5 +1,7 @@
 # rpi-film-capture
 
+<img align="right" src="images/pifilm-setup.png">
+<img  align="right" src="images/pifilm-advanced.png">
 A project to perform frame-by-frame capture of 8mm and 16mm films using a raspberry pi, the pi camera, and a modified movie projector. 
 
 Design:
@@ -19,6 +21,7 @@ Optimizations for Quality:
 * Full control over Pi Camera's settings, some of which may be changed mid-capture.
 * Some simple histogram adjustment tools can do some processing on captured images before saving.
 
+<img  align="right"src="images/pifilm-capture.png">
 Optimizations for Usability:
 * 'Setup Mode' allows for precise adjustment of camera before starting capture.
 * Near-real-time view of captured images.
@@ -26,10 +29,8 @@ Optimizations for Usability:
 * 'Smart capture' features to adjust to dramatic lighting changes (under development)
 * Entire system can be moved between projectors to another to change film gauges.
 
+<img  align="right"src="images/pifilm-capture.png">
 See the [wiki](https://github.com/jphfilm/rpi-film-capture/wiki)(still under construction) for complete documentation, including a manual, wiring diagrams, and hardware selection tips for your own project.
 
 Demonstration video, samples, and comparison w/ direct capture at speed available on my [YouTube channel](https://www.youtube.com/channel/UCQi6WqZvf4OT9eOhWeVfKMg).
-<div style="float: right;" ><img src="images/pifilm-setup.png">
-<img style="float: right;" src="images/pifilm-capture.png">
-<img style="float: right;" src="images/pifilm-advanced.png">
 </div>
