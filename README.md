@@ -17,14 +17,15 @@ Optimizations for Speed:
 * Practical per-frame capture times range from 1.6s/frame for 3-exposure bracketing from still port, down to .5s/frame for single-exposure captures from video port.
 
 Optimizations for Quality:
+<img  align="right" src="images/pifilm-advanced.png">
 * Performs exposure bracketing on frames and combine them, to capture a much higher dynamic range than the Pi Camera normally permits.
 * Full control over Pi Camera's settings, some of which may be changed mid-capture.
 * Some simple histogram adjustment tools can do some processing on captured images before saving.
 
 Optimizations for Usability:
 * 'Setup Mode' allows for precise adjustment of camera before starting capture.
+<img  align="right"src="images/pifilm-capture.png">
 * Near-real-time view of captured images.
-<img  align="right" src="images/pifilm-advanced.png">
 * Save/load settings, e.g. for different film types or projector setups.
 * 'Smart capture' features to adjust to dramatic lighting changes (under development)
 * Entire system can be moved between projectors to another to change film gauges.
@@ -32,5 +33,4 @@ Optimizations for Usability:
 See the [wiki](https://github.com/jphfilm/rpi-film-capture/wiki)(still under construction) for complete documentation, including a manual, wiring diagrams, and hardware selection tips for your own project.
 
 Demonstration video, samples, and comparison w/ direct capture at speed available on my [YouTube channel](https://www.youtube.com/channel/UCQi6WqZvf4OT9eOhWeVfKMg).
-<img  align="right"src="images/pifilm-capture.png">
 
