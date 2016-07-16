@@ -32,4 +32,4 @@ See the [wiki](https://github.com/jphfilm/rpi-film-capture/wiki)(still under con
 
 Demonstration video, samples, and comparison w/ direct capture at speed available on my [YouTube channel](https://www.youtube.com/channel/UCQi6WqZvf4OT9eOhWeVfKMg).
 <img  align="right"src="images/pifilm-capture.png">
-<img  align="left"src="images/super8setup.jpg">
+<img  align="left"src="images/super8setup.jpg" width="400">
