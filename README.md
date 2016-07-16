@@ -20,16 +20,16 @@ Optimizations for Quality:
 * Full control over Pi Camera's settings, some of which may be changed mid-capture.
 * Some simple histogram adjustment tools can do some processing on captured images before saving.
 
-<img  align="right" src="images/pifilm-advanced.png">
 Optimizations for Usability:
 * 'Setup Mode' allows for precise adjustment of camera before starting capture.
 * Near-real-time view of captured images.
 * Save/load settings, e.g. for different film types or projector setups.
 * 'Smart capture' features to adjust to dramatic lighting changes (under development)
+<img  align="right" src="images/pifilm-advanced.png">
 * Entire system can be moved between projectors to another to change film gauges.
 
-<img  align="right"src="images/pifilm-capture.png">
 See the [wiki](https://github.com/jphfilm/rpi-film-capture/wiki)(still under construction) for complete documentation, including a manual, wiring diagrams, and hardware selection tips for your own project.
 
 Demonstration video, samples, and comparison w/ direct capture at speed available on my [YouTube channel](https://www.youtube.com/channel/UCQi6WqZvf4OT9eOhWeVfKMg).
-</div>
+<img  align="right"src="images/pifilm-capture.png">
+
