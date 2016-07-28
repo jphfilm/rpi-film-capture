@@ -22,9 +22,12 @@ brt_max_double = 170
 brt_min_single = 70
 brt_min_double = 50
 
+calibrate_motor_every = 50
+framecount = 0
+
 missed_frames = 0
 img_format = 'jpeg'  #Works with other formats, but clarge sizes make it much slower.
-jpeg_quality = 95
+jpeg_quality = 100
 
 auto_advance = False #this determines whether we advance after each photo
                      #turned on/off by commands from client   
@@ -185,6 +188,13 @@ def processCmd(cmdstr):
     elif cmd == c.STOP_CAPTURE:
         auto_advance=False
         #fc.motor_sleep()
+    elif cmd == c.RESUME_CAPTURE:
+        global cap_event
+        auto_advance=True
+        fc.motor_wake()
+        #Don't take a photo, b/c we should have got the last frame. Just advance a frame.
+        cap_event.set()
+        #fc.motor_sleep()
     elif cmd == c.CAP_FRAME_ADV:
         cam.mode=cam.OFF
         num=int(setting) if setting else 1
@@ -220,18 +230,18 @@ def camera_free():
     fc.yellow_off()
 
 def take_a_photo(channel):  #callback triggered by frame advance setting GPIO pin
-    global fc, auto_advance, cap_event
+    global fc, auto_advance, cap_event, calibrate_motor_every, framecount
     cam = config.cam
-    sleep(0.05)  #wait before checking status of trigger, to avoid false triggers
+    #sleep(0.03)  #wait before checking status of trigger, to avoid false triggers
     logging.debug("Trigger "+str(GPIO.input(fc.trigger_pin))+str(cam.mode))
     if (((channel == 0) or (GPIO.input(fc.trigger_pin) == 1)) and cam.mode==cam.CAPTURING):  #only take this photo if we're in capture mode
         logging.debug("Trigger Valid")
         #if channel!=0: #photo hasn't been triggered, so we're not monitoring it
         camera_busy()
         i=1
-        if channel == 0:  #this signifies a non-triggered photo, so we need to manually set the initial shutter speed
+        if True: #channel == 0:  #this signifies a non-triggered photo, so we need to manually set the initial shutter speed
             cam.shutter_speed = bracketSS(cam.stops, i, cam.bracketing, cam.ss)
-            sleep(1.5/cam.framerate)
+            sleep(2/cam.framerate)
         while i<= cam.bracketing:
             while not len(config.pool):  #if we don't have enough processors for the next photo (maybe because of network congestion or a busy client)
                 sleep(1)                #the we just wait until we do.  This should be rare, but it will happen
@@ -244,13 +254,31 @@ def take_a_photo(channel):  #callback triggered by frame advance setting GPIO pi
             cam.shutter_speed = bracketSS(cam.stops, nextshot, cam.bracketing, cam.ss)
             #below line is really important! Without sufficient delay, camera won't use new shutter speed
             #on next photo.  Only necessary when using video port.
-            if i< cam.bracketing:
-                sleep(1.3/cam.framerate)#try giving camera time to register new shutter speed
+            if i< cam.bracketing and cam.vidcap:
+                sleep(2/cam.framerate)#try giving camera time to register new shutter speed
             i+=1
+#        if channel == 0 and not auto_advance:  #again, a non-triggered photo, so set it BACK to avg
+#            cam.shutter_speed = cam.ss
         camera_free()
         if auto_advance:
-            cap_event.set()  #send the signal to the motor winder
-        logging.debug("Photo taken")
+            while cap_event.is_set(): #perhaps we're done w/ photo before last wind is finished?  If so, wait for it.
+                sleep(.05)
+            if GPIO.input(fc.trigger_pin) == 1: #if motor's done winding and we're still triggered, there's a problem - log it and stop
+                logging.debug("Capture Trigger still live after capture - dang.  Need to calibrate early")
+                framecount=0
+                fc.calibrate() #wind the motor more slowly to the next frame.
+                take_a_photo(0)
+            elif framecount >= calibrate_motor_every:  #the motor may skip steps occasionally,
+                                                    #so every so often we reset it relative to the projector
+                logging.debug("Time to calibrate the motor!")
+                framecount=0
+                fc.calibrate() #wind the motor more slowly to the next frame.
+                take_a_photo(0)
+            else:
+                framecount += 1
+                cap_event.set()  #send the signal to the motor winder
+            
+        logging.debug("Photo taken "+ str(framecount))
 
 def bracketSS(stops, shot, bkt, ss):   #determine shutter speed for arbitrary number of bracketed shots, at arbitrary spread of stops
     if bkt == 1:
@@ -271,8 +299,10 @@ def take_and_queue_photo(imgflag):
         if processor:
             #logging.debug("Got processor")
             stream=processor.stream
-            cam.capture(stream, img_format, quality=jpeg_quality, use_video_port = cam.vidcap, resize=cam.capsize)
-            #logging.debug("got photo")
+            logging.debug("CapStart")
+#            cam.capture(stream, "yuv", use_video_port = cam.vidcap)#, resize=cam.capsize) #experiment
+            cam.capture(stream, img_format, quality=jpeg_quality, use_video_port = cam.vidcap)#, resize=cam.capsize)
+            logging.debug("got photo "+str(cam.contrast))
             processor.imgflag = imgflag
             processor.event.set()   #start the thread which streams the photo
             #logging.debug("Set Event")

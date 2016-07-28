@@ -29,6 +29,7 @@ class fcCamera(picamera.PiCamera):
         #sleep(2)
         logging.debug("Cam Initialized")
         #self.awb_mode='off'
+        self.stops=1
 
 
     def setDefaults(self):
@@ -44,13 +45,13 @@ class fcCamera(picamera.PiCamera):
         self.sendgains = False  #flag to trigger sending of shutter speed
         self.framerate=15
         self.exposure_mode = "auto"
-        self.awb_mode = 'auto' #should already be off but just in case
+        self.awb_mode = 'auto' 
 
     def setResize(self, num):
-        self.capsize=self.resolutions[num]
+        #self.capsize=self.resolutions[num]
         #self.resolution=self.resolutions[num]
-        #self.res_capture=self.resolutions[num]
-        #logging.debug("Newres"+str(self.resolution))
+        self.res_capture=self.resolutions[num]
+        logging.debug("Newres"+str(self.resolution))
         
     def startPreviewMode(self):
         self.mode = self.OFF
@@ -58,9 +59,9 @@ class fcCamera(picamera.PiCamera):
         sleep(1)
         logging.debug("Switching to prev mode")
         self.resolution = self.res_preview #half resolution for preview images
-        print "res changed"
+        logging.debug("res changed to preview")
         #self.exposure_mode = 'auto'   #let cam adjust exposure for previews
-        self.shutter_speed = 0
+#        self.shutter_speed = 0
         sleep(1)
         print "exp mode set"
         #self.awb_mode='off'
@@ -72,6 +73,7 @@ class fcCamera(picamera.PiCamera):
         sleep(1)    #To wait for previewer thread to finish
         logging.debug("Starting Capture mode")
         self.resolution = self.res_capture
+        sleep(.5)
         #self.setExposure()
         self.mode = self.CAPTURING
         self.ss=self.exposure_speed
@@ -107,37 +109,48 @@ class fcCamera(picamera.PiCamera):
     def fixAndSendGains(self):
         gains = self.awb_gains
         self.awb_mode = 'off'
+        sleep(.5)
         self.awb_gains = gains
         self.sendgains = gains
         logging.debug(gains)
 
     def setExposure(self):
-        self.start_preview()  #NEED TO START PREVIEW BEFORE SETTING THIS!        
+#        self.start_preview()  #NEED TO START PREVIEW BEFORE SETTING THIS!        
         #this temporarily sets a higher framerate, while we fix gains,
         #so that longer bracked exposures won't try to set an exposure 
         #time (shutter_speed) higher than that allowable by the framerate
-        self.iso = 0  #lets try this
-        
+#        self.iso = 0  #lets try this
+        self.iso=100
         bracket_adj_factor = 2**(self.stops/2.0)
-        #set the framerate based on the bracketing settings
-        self.framerate = int(self.default_framerate*bracket_adj_factor)
 
+
+ #NEED TO DO FRAMERATE ADJUSTMENTS WHILE UNDER AUTO!  THEN SET SS AFTER CHANGING TO OFF
+
+
+        #self.fixAndSendGains()
         #set exposure mode to auto and shutter speed to 0 to allow gains to set
         self.exposure_mode = 'auto'
-        self.shutter_speed = 0 #allows it to be set automatically
+        #set the framerate based on the bracketing settings
+        sleep(.5)
+#        self.framerate = int(self.default_framerate*bracket_adj_factor)
+#        self.shutter_speed = 0 #allows it to be set automatically
 #        self.shutter_speed = self.exposure_speed
-        self.awb_mode = 'off' #should already be off but just in case
+
+
         #give camera time to adjust
         sleep(2)
         logging.debug("Setting exposure - awb off"+str(self.exposure_speed))
         logging.debug(str(self.framerate)+"FPS "+str(self.analog_gain)+" "+str(self.digital_gain))
-        self.exposure_mode = 'off'  #to fix gains
         self.ss= self.exposure_speed #save it to variable
+
+        #then change the framerate BACK *before turning exposure mode off, or camera V2 bug rears its ugly head*
+#        self.framerate = self.default_framerate
+        sleep(.5)
+
+        self.exposure_mode = 'off'  #to fix gains
         self.shutter_speed = self.ss
         logging.debug("ss="+str(self.exposure_speed))
-        self.stop_preview()
+#        self.stop_preview()
         self.sendss = True
         
-        #then change the framerate BACK
-        self.framerate = self.default_framerate
 

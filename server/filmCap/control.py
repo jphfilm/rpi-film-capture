@@ -11,7 +11,7 @@ class fcControl():
     yellow_pin = 4
     trigger_pin = 14
     speed = 100
-    frame_advance_pct=50
+    frame_advance_pct=50  #This is the CUSHION - we advance 100 minus this amt after trigger
     #old DC motor control pins
     #fwd_pin = 18
     #rev_pin = 17
@@ -81,6 +81,9 @@ class fcControl():
         self.motorstate = 0
         self.motor.sleep()
 
+    def calibrate(self):
+        self.motor.center(self.trigger_pin, self.frame_advance_pct, 1)
+
     def motor_set_speed(self, speed):
         speed=min(speed,100)
         self.speed = speed
@@ -109,7 +112,7 @@ class lightControl:
 	GPIO.output( self.pin, self.reversed )
 
 class stepperControl:
-    pulse_freq = 1600 
+    pulse_freq = 1000 
     #stepper motor control pins
     dir_pin = 18
     ms1_pin = 22
@@ -117,8 +120,9 @@ class stepperControl:
     sleep_pin = 27
     reset_pin = 15
     pulse_pin = 17
-    half_pulse = .000625 #for frame advance
-
+    half_pulse = .001 #for frame advance
+    steps_per_rev = 200 #also change for MotorDriver class below
+    
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.dir_pin, GPIO.OUT)
@@ -158,7 +162,7 @@ class stepperControl:
         logging.debug(self.pulse_freq*speed/100)
         GPIO.output(self.dir_pin, False)
         logging.debug("motor starting fwd")        
-        self.p1.start(50)
+        self.p1.start(20)
         
     def rev(self, speed=100):
         self.wake()
@@ -167,7 +171,7 @@ class stepperControl:
         self.p1.ChangeFrequency(self.pulse_freq*speed/100)
         GPIO.output(self.dir_pin, True)
         logging.debug("motor starting rev")
-        self.p1.start(50)
+        self.p1.start(20)
 
     def fwdFrame(self, num=1):
         #self.p1.stop() #shouldn't be needed
@@ -179,7 +183,7 @@ class stepperControl:
     def windFrame(self, num=1):
         pin=self.pulse_pin  #directly accessing for speed
         hp=self.half_pulse
-        for i in range (0,int(400*num)):
+        for i in range (0,int(self.steps_per_rev*num)):
             GPIO.output(pin, True) #used instead of variable for speed
             time.sleep(hp) #again, directly entring num for speed
             GPIO.output(pin, False) #used instead of variable for speed
@@ -200,14 +204,16 @@ class stepperControl:
             self.windFrame(1)
         self.sleep()
         
+    
+
     def center(self, trigger_pin, pct, fromState):
         #to center a frame in the gate and position the projector
         #mechanism properly relative to the photo trigger (i.e. 'pct'
         #distance ahead of it. Winding film backwards doesn't position
         #correctly, so we need to bump ahead a frame to position after
         #rewinding
-        while GPIO.input(trigger_pin):   #if trigger is engaging,reverse until it's not
-            GPIO.output(self.dir_pin, True)
+        while GPIO.input(trigger_pin):   #if trigger is engaging,reverse NO, FORWARD until it's not
+            GPIO.output(self.dir_pin, False) #True)
             GPIO.output(self.pulse_pin, True)
             time.sleep(.001)
             GPIO.output(self.pulse_pin, False)
@@ -216,13 +222,13 @@ class stepperControl:
         while not GPIO.input(trigger_pin):   #then forward until it is 
             GPIO.output(self.dir_pin, False)
             GPIO.output(self.pulse_pin, True)
-            time.sleep(.005)
+            time.sleep(.001)
             GPIO.output(self.pulse_pin, False)
-            time.sleep(.005)
+            time.sleep(.001)
         if fromState==-1:                         #if we had been reversing, jump forward a frame
             self.windFrame(1)
             logging.debug("Winding 1 frame")
-        stepsFwd=int(4*(100-pct))
+        stepsFwd=int(self.steps_per_rev*(100-pct)/100.0)
         GPIO.output(self.dir_pin, False)
         time.sleep(.01)
         logging.debug("Forward "+str(stepsFwd))
@@ -233,7 +239,7 @@ class stepperControl:
             time.sleep(.005)
 
     #first attempt; probably don't use.
-    def calibrate(self, trigger, pct):
+    def calibrateOLD(self, trigger, pct):
         #if we START with the trigger live, go forward a half revolution
         #moves motor slowly forward until trigger happens,
         #then backs up to a point before the frame transition,
@@ -261,7 +267,8 @@ class MotorDriver(multiprocessing.Process):
     #process during captures, so a different core can handle it and it
     #won't delay photography - or vice versa
     pulse_pin = 17
-    half_pulse = .000625
+    half_pulse = .0005
+    steps_per_rev = 200
     def __init__(self, cap_event, exit_event):
         super(MotorDriver, self).__init__()
         self.cap_event=cap_event
@@ -286,7 +293,7 @@ class MotorDriver(multiprocessing.Process):
         pin=self.pulse_pin
         hp=self.half_pulse
         logging.debug("Fframe")
-        for i in range (0,int(400*num)):
+        for i in range (0,int(self.steps_per_rev*num)):
             GPIO.output(pin, True) #used instead of variable for speed
             time.sleep(hp) #again, directly entring num for speed
             GPIO.output(pin, False) #used instead of variable for speed
