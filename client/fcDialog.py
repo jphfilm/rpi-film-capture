@@ -23,6 +23,8 @@ def adj_for_size(pixcount, px): #used by histogram calculation
 	return "{0:.2f}".format(float(pixcount/px*100))
 
 
+
+
 class fcDialog(QDialog, Ui_Form1):
 	def __init__(self, parent=None):
 		super(fcDialog, self).__init__(parent)
@@ -36,6 +38,7 @@ class fcDialog(QDialog, Ui_Form1):
 		self.plot.set_xlim([0, 256])
 		self.canvas.draw()
 		self.move(0,0)
+		self.Levels=[[0,255],[0,255],[0,255]]
 
 	def setupThreadingUpdates(self, imgthread):
 		#set up connections to UI update from imgthread
@@ -49,15 +52,18 @@ class fcDialog(QDialog, Ui_Form1):
 #TAB CHANGE CONROLS
 	def tabChanged(self,tab):
 		if tab == 0:
+			if config.captureOn:
+				config.captureOn = False
 			sendCtrl(CAPTURE_OFF) #to stop capture mode
 			if self.prevCheckBox.isChecked():
 				sendCtrl(PREVIEW_ON)
 		elif tab == 1:
-			self.autoExpCheckBox.setChecked(False)
-			sendCtrl(CAPTURE_ON) #to start capture mode
-			#sendCtrl(SPEED+str(self.driveSpeed.value()))
-			config.captureOn = True
-			config.wait_for_test=True  #switching to capture mode sets the exposure and sends a test pic
+			if not config.captureOn:
+				self.autoExpCheckBox.setChecked(False)
+				sendCtrl(CAPTURE_ON) #to start capture mode
+				#sendCtrl(SPEED+str(self.driveSpeed.value()))
+				config.captureOn = True
+				config.wait_for_test=True  #switching to capture mode sets the exposure and sends a test pic
 		#if tab = 2 (advanced) we leave things at current setting
 #SETUP CONTROLS	
 	def motorFwd(self):
@@ -136,11 +142,22 @@ class fcDialog(QDialog, Ui_Form1):
 		config.wait_for_test=False  #might not be necessary, but if we didn't get an extra frame when stopping it won't set back
 	def captureEnd(self):
 		sendCtrl(STOP_CAPTURE)
-		if not self.lightCheckbox.isChecked():
-			sendCtrl(LIGHT_OFF) 
+		#if not self.lightCheckbox.isChecked():
+		#	sendCtrl(LIGHT_OFF) 
 		self.setExposureBtn.setEnabled(True)
 		config.wait_for_test=True  #this assumes that we might get an extra frame after sending quit signal
 		self.startFrameBox.setValue(config.frame_number)
+	def capturePause(self, paused):
+		if paused:
+			sendCtrl(STOP_CAPTURE)
+			self.pauseBox.setEnabled(False)
+			sleep(5)  #We switch to test mode, but only after finishing streaming whatever's coming
+			self.setExposureBtn.setEnabled(True)
+			self.pauseBox.setEnabled(True)
+			config.wait_for_test=True  #this assumes that we might get an extra frame after sending quit signal
+		else:
+			config.wait_for_test=False
+			sendCtrl(RESUME_CAPTURE)
 	def capFrameAdv(self):
 		sendCtrl(CAP_FRAME_ADV)
 	def capFrameRev(self):
@@ -151,7 +168,8 @@ class fcDialog(QDialog, Ui_Form1):
 		sendCtrl(CAP_FRAME_REV+"10")
 
 	def chooseFolder(self):
-		folder = QFileDialog.getExistingDirectory(self, "Choose Capture Folder", "", QFileDialog.ShowDirsOnly)
+		startfolder = os.path.dirname(str(self.configFile.text()) or config.default_folder)
+		folder = QFileDialog.getExistingDirectory(self, "Choose Capture Folder", startfolder, QFileDialog.ShowDirsOnly)
 		self.setFolder(folder)
 	def setFolder(self, folder):
 		if folder:
@@ -244,6 +262,44 @@ class fcDialog(QDialog, Ui_Form1):
 		self.redGainBox.setValue(r)
 		self.blueGain.setValue(b)
 		self.blueGainBox.setValue(b)
+
+	def setAdjLowR(self,val):
+		self.Levels[2][0]=val
+		self.setNorms(2)
+	def setAdjHiR(self,val):
+		self.Levels[2][1]=val
+		self.setNorms(2)
+	def setAdjLowG(self,val):
+		self.Levels[1][0]=val
+		self.setNorms(1)
+	def setAdjHiG(self,val):
+		self.Levels[1][1]=val
+		self.setNorms(1)
+	def setAdjLowB(self,val):
+		self.Levels[0][0]=val
+		self.setNorms(0)
+	def setAdjHiB(self,val):
+		self.Levels[0][1]=val
+		self.setNorms(0)
+
+	def setNorms(self,color):
+		self.lutChannel(color,self.Levels[color][0], self.Levels[color][1])
+
+	def levels2norms(self,low,hi):
+		slope=256.0/(hi-low)
+		alpha=0-(slope*low)
+		beta =256*slope-alpha
+		return(alpha, beta)
+		
+	def lutChannel(self,color,low,hi):
+		logging.debug("LOW: %d, HIGH%d"%(low,hi))
+		slope=256.0/(hi-low)
+		alpha=0-(slope*low)
+		beta =256*slope+alpha
+		logging.debug(color)
+		for i in range(256):
+			logging.debug(min(max(i*slope+alpha,0),255))
+			config.lut[i][0][color]=min(max(i*slope+alpha,0),255)
 # ADVANCED CONTROLS
 	def setDrc(self, drc):
 		return drc

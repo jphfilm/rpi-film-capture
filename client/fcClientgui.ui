@@ -344,7 +344,7 @@
       <rect>
        <x>120</x>
        <y>160</y>
-       <width>101</width>
+       <width>81</width>
        <height>27</height>
       </rect>
      </property>
@@ -355,9 +355,9 @@
     <widget class="QPushButton" name="captureStopBtn">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>160</y>
-       <width>101</width>
+       <x>130</x>
+       <y>200</y>
+       <width>71</width>
        <height>27</height>
       </rect>
      </property>
@@ -850,6 +850,19 @@
      </property>
      <property name="text">
       <string>10-&gt;</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="pauseBox">
+     <property name="geometry">
+      <rect>
+       <x>215</x>
+       <y>162</y>
+       <width>99</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Pause</string>
      </property>
     </widget>
    </widget>
@@ -2717,7 +2730,7 @@
    <slot>captureStart()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>214</x>
+     <x>202</x>
      <y>217</y>
     </hint>
     <hint type="destinationlabel">
@@ -2845,8 +2858,8 @@
    <slot>captureEnd()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>312</x>
-     <y>217</y>
+     <x>202</x>
+     <y>257</y>
     </hint>
     <hint type="destinationlabel">
      <x>201</x>
@@ -3318,6 +3331,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pauseBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Form1</receiver>
+   <slot>capturePause(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>242</x>
+     <y>204</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>83</x>
+     <y>573</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resolution</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>Form1</receiver>
+   <slot>setCapRes(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>194</x>
+     <y>131</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>111</x>
+     <y>556</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <signal>gotFolder(str)</signal>
@@ -3388,5 +3433,6 @@
   <slot>capFrameAdv10()</slot>
   <slot>capFrameRev10()</slot>
   <slot>setAutoExp(bool)</slot>
+  <slot>capturePause(bool)</slot>
  </slots>
 </ui>

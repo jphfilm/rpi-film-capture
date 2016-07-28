@@ -27,7 +27,14 @@ def getMask(img, fraction):
 	return mask
 
 def saveable_img(img):
-	return 	np.array(img,dtype=float)*float(255)
+	return np.array(img,dtype=float)*float(255)
+
+def adjustable_img(img):
+	return cv2.convertScaleAbs(img, alpha=255)
+	#return np.array(img*float(250),dtype=np.uint8)
+
+def saveable_255_img(img):
+	return np.array(img,dtype=float)
 
 
 def quickBrightness(img):
@@ -37,6 +44,14 @@ def quickBrightness(img):
 	logging.debug("Brt="+str(brt))
 	return brt
 
+def adjustLevels(img):
+	return cv2.LUT(img, config.lut)
+	#channels=cv2.split(img)
+	#channels2=[]
+	#for (channel, norm) in zip(channels, config.norms):
+	#	cv2.normalize(channel,channel,norm[0],norm[1], cv2.NORM_MINMAX)
+	#	channels2.append(channel)
+	#return cv2.merge(channels2)
 
 class imgThread (qtcore.QThread):#(threading.Thread):
 	def __init__(self, connection, app):
@@ -62,16 +77,20 @@ class imgThread (qtcore.QThread):#(threading.Thread):
 		logging.debug("Starting blend Thread")
 		cvimg=blender.process(imList)
 		logging.debug("Done Blending")
+		cvimg=adjustLevels(adjustable_img(cvimg))
+		#cvimg=adjustable_img(cvimg)
+
 		if config.wait_for_test:
 			cv2.putText(cvimg, "TEST", (20,900), cv2.FONT_HERSHEY_PLAIN, 10, (0,255,0),4)
 			#config.wait_for_test=False
 		else:
-			cv2.imwrite(thefilename(fnum),saveable_img(cvimg))
+			#cv2.imwrite(thefilename(fnum),saveable_img(cvimg), [int(cv2.IMWRITE_JPEG_QUALITY), 97])
+			cv2.imwrite(thefilename(fnum),cvimg, [int(cv2.IMWRITE_JPEG_QUALITY), 97])
 		if config.wait_for_test or show:
 			cv2.imshow(config.imgWinTitle, cvimg)
 			#cv2.waitKey()
-		logging.debug("Displayed")
-		self.plothist(cvimg,True)
+		#logging.debug("Displayed")
+		self.plothist(cvimg)#,True)
 
 	def plothist(self, img, fScale=False):   #perhaps this should be called in a separate thread?
 		bins=256
@@ -138,36 +157,46 @@ class imgThread (qtcore.QThread):#(threading.Thread):
 						image_stream.write(self.conn.read(image_len))
 						image_stream.seek(0)
 						if imgflag == "s": #single image
-							cvimg=cv2.imdecode(np.fromstring(image_stream.read(image_len), dtype=np.uint8),1)					
+							cvimg=cv2.imdecode(np.fromstring(image_stream.read(image_len), dtype=np.uint8),1)
+							cvimg2=adjustLevels(cvimg)
+                            #tmp=image_stream.read(image_len)
 							if config.wait_for_test:
-								cv2.putText(cvimg, "TEST", (20,900), cv2.FONT_HERSHEY_PLAIN, 10, (0,255,0),4)
+								cv2.putText(cvimg2, "TEST", (20,900), cv2.FONT_HERSHEY_PLAIN, 10, (0,255,0),4)
 							#else:
 							#	process_for_brightness(cvimg)
-							cv2.imshow(config.imgWinTitle, cvimg)
-							self.plothist(cvimg)
+							cv2.imshow(config.imgWinTitle, cvimg2)
+							self.plothist(cvimg2)
 							#logging.debug("Single Shown")
 							if not config.wait_for_test:
 								filename = thefilename(config.frame_number)
-								image_stream.seek(0)
+								#image_stream.seek(0) #for when writing original non-modified image
 								with open(filename, 'w') as imfile:
-									imfile.write(image_stream.read(image_len))
+									#imfile.write(image_stream.read(image_len)) original image
+									#cv2.imwrite(filename,saveable_img(cvimg), [int(cv2.IMWRITE_JPEG_QUALITY), 97])
+									cv2.imwrite(filename, cvimg2, [int(cv2.IMWRITE_JPEG_QUALITY), 97])
 								self.updateFrameNum(config.frame_number)
 								config.frame_number+=1
 								#logging.debug("Single Written to "+filename)
 						if imgflag == "p": #preview image
 							cvimg=cv2.imdecode(np.fromstring(image_stream.read(image_len), dtype=np.uint8),1)
-							cv2.imshow(config.imgWinTitle, cvimg)
+							logging.debug(cvimg.dtype)
+							cvimg2=adjustLevels(cvimg)
+							cv2.imshow(config.imgWinTitle, cvimg2)
 							pframe+=1
 							if pframe>10:
 								pframe=0
-								self.plothist(cvimg)							
+								self.plothist(cvimg2)							
 						if imgflag == "a": #one of several blended images
 							#save image data in variable, dont increment or update display
 							logging.debug('start a')
 							imglist.append(cv2.imdecode(np.fromstring(image_stream.read(image_len), dtype=np.uint8),1))
+							#tmp=image_stream.read(image_len)
 						if imgflag == "b": #the last of several blended images
 							#logging.debug('start read final')
 							imglist.append(cv2.imdecode(np.fromstring(image_stream.read(image_len), dtype=np.uint8),1))
+							
+							#tmp=image_stream.read(image_len)
+							
 							self.updateStatus(str(config.frame_number)+' '+' '.join(map(str,map(quickBrightness,imglist))))
 							thd=threading.Thread(target=self.blendImgList, args=(imglist[:],True,config.frame_number)) #colon in brackets makes new copy of list
 							thd.start() #tried this using multiprocessing, but it hung when processing merge_mertens

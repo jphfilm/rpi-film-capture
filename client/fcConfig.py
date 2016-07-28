@@ -1,4 +1,5 @@
 import ConfigParser
+from time import sleep
 
 #A module to save settings to (and restore them from) a config file.
 class fcConfigParser(ConfigParser.SafeConfigParser):
@@ -11,18 +12,27 @@ class fcConfigParser(ConfigParser.SafeConfigParser):
 			self.add_section('Smartcap')
 		sec='Camera'
 		#Zoom
-		ui.xScroll.setValue(ui.setX(self.getint(sec,'x')))
-		ui.yScroll.setValue(ui.setY(self.getint(sec,'y')))
-		ui.zoomDial.setValue(ui.setZoom(self.getint(sec,'zoom')))
+		ui.zoomDial.setValue(self.getint(sec,'zoom'))#(ui.setZoom(self.getint(sec,'zoom')))
+		ui.xScroll.setValue(self.getint(sec,'x'))#(ui.setX(self.getint(sec,'x')))
+		ui.yScroll.setValue(self.getint(sec,'y'))#(ui.setY(self.getint(sec,'y')))
 
 		#Color/Brightness
-		ui.awbBox.setCurrentIndex(ui.awbBox.findText(ui.setAWBmode(self.get(sec,'awb')))) #this must be done before setting gains
+		ui.awbBox.setCurrentIndex(ui.awbBox.findText(self.get(sec,'awb'))) #(ui.setAWBmode(self.get(sec,'awb')))) #this must be done before setting gains
+		sleep(.1)
 		ui.redGainBox.setValue(ui.setGainRed(self.getint(sec,'redgain')))
+		sleep(.2)
 		ui.blueGainBox.setValue(ui.setGainBlue(self.getint(sec,'bluegain')))
 		ui.saturationBox.setValue(ui.setSaturation(self.getint(sec,'saturation')))
 		ui.brightnessBox.setValue(ui.setBright(self.getint(sec,'brightness')))
 		ui.EV.setValue(ui.setEV(self.getint(sec,'ev')))
 		ui.contrastBox.setValue(ui.setContrast(self.getint(sec,'contrast')))
+		ui.levelLowR.setValue(self.getint(sec,'lowr'))
+		ui.levelLowG.setValue(self.getint(sec,'lowg'))
+		ui.levelLowB.setValue(self.getint(sec,'lowb'))
+		ui.levelHiR.setValue(self.getint(sec,'hir'))
+		ui.levelHiG.setValue(self.getint(sec,'hig'))
+		ui.levelHiB.setValue(self.getint(sec,'hib'))
+		
 
 		#Advanced
 		ui.stillCap.setChecked(ui.setStillPort(self.getboolean(sec,'usestillport')))
@@ -77,6 +87,13 @@ class fcConfigParser(ConfigParser.SafeConfigParser):
 		self.set(sec,'awb',			str(ui.awbBox.currentText()))
 		self.set(sec,'ev',			str(ui.EV.value()))
 		self.set(sec,'usestillport',str(ui.stillCap.isChecked()))
+
+		self.set(sec,'lowr',			str(ui.levelLowR.value()))
+		self.set(sec,'lowg',			str(ui.levelLowG.value()))
+		self.set(sec,'lowb',			str(ui.levelLowB.value()))
+		self.set(sec,'hir',			str(ui.levelHiR.value()))
+		self.set(sec,'hig',			str(ui.levelHiG.value()))
+		self.set(sec,'hib',			str(ui.levelHiB.value()))
 		
 		sec='Capture'
 		self.set(sec,'capfolder',	str(ui.capFolder.text()))

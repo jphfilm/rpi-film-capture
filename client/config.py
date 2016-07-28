@@ -1,4 +1,6 @@
 import collections
+import numpy as np
+import cv2
 
 server_ip = "raspberrypi.local"
 app = False
@@ -19,6 +21,14 @@ default_folder = "/storage/Films/"
 folder = "."
 initfile="startup.ini"
 brightProcess=True
+#norms=[[0,255],[0,255],[0,255]]
+lut1 = np.arange(256, dtype = np.uint8 )
+lut = cv2.merge((lut1,lut1,lut1))
+#print lut3
+#lut=np.ndarray(shape=(3,256), dtype=np.uint8)
+#for color in range(3):
+#    for i in range(256):
+#        lut3[i][color]=i
 
 last4prev=None
 last4init=None
