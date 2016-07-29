@@ -1,6165 +1,1739 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
- <class>Form1</class>
- <widget class="QDialog" name="Form1">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>324</width>
-    <height>831</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
-  <widget class="QTabWidget" name="tabWidget">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>323</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <property name="currentIndex">
-    <number>1</number>
-   </property>
-   <widget class="QWidget" name="tab_setup">
-    <attribute name="title">
-     <string>Setup</string>
-    </attribute>
-    <widget class="QFrame" name="PictureControls">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>10</y>
-       <width>291</width>
-       <height>91</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If checked, camera will automatically adjust exposure. Should normally be on, but is turned OFF when switching back from capture mode, so camera can be adjusted without affecting capture shutter speed or exposure gains.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QCheckBox" name="lightCheckbox">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>0</y>
-        <width>61</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::TabFocus</enum>
-      </property>
-      <property name="text">
-       <string>Light</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="prevCheckBox">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>20</y>
-        <width>81</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Preview</string>
-      </property>
-     </widget>
-     <widget class="QDial" name="zoomDial">
-      <property name="geometry">
-       <rect>
-        <x>-1</x>
-        <y>0</y>
-        <width>91</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="minimum">
-       <number>400</number>
-      </property>
-      <property name="maximum">
-       <number>1000</number>
-      </property>
-      <property name="value">
-       <number>700</number>
-      </property>
-      <property name="notchTarget">
-       <double>25.000000000000000</double>
-      </property>
-      <property name="notchesVisible">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>74</y>
-        <width>71</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>0.4        1.0</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="reverseButton">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>60</y>
-        <width>31</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;-</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="stopButton">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>60</y>
-        <width>41</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Stop</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="forwardButton">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>60</y>
-        <width>31</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>-&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="ffdButton">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>60</y>
-        <width>31</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&gt;&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="fRevButton">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>60</y>
-        <width>31</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;&lt;</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="autoExpCheckBox">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>40</y>
-        <width>91</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Automatically adjusts exposure.  On by default, but turned off when switching back from capture, so frame can be adjusted without affecting shutter speed or gains.</string>
-      </property>
-      <property name="text">
-       <string>Auto Exp</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <zorder>lightCheckbox</zorder>
-     <zorder>prevCheckBox</zorder>
-     <zorder>label_6</zorder>
-     <zorder>zoomDial</zorder>
-     <zorder>reverseButton</zorder>
-     <zorder>stopButton</zorder>
-     <zorder>forwardButton</zorder>
-     <zorder>ffdButton</zorder>
-     <zorder>fRevButton</zorder>
-     <zorder>autoExpCheckBox</zorder>
-    </widget>
-    <widget class="QFrame" name="ConfigControls">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>120</y>
-       <width>291</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QPushButton" name="loadConfigButton">
-      <property name="geometry">
-       <rect>
-        <x>87</x>
-        <y>6</y>
-        <width>61</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Load...</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="saveConfigButton">
-      <property name="geometry">
-       <rect>
-        <x>152</x>
-        <y>5</y>
-        <width>41</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Save</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="configFile">
-      <property name="geometry">
-       <rect>
-        <x>5</x>
-        <y>35</y>
-        <width>271</width>
-        <height>27</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="saveConfigButton_2">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>5</y>
-        <width>81</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Save As...</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_18">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>11</y>
-        <width>71</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Config File</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QScrollBar" name="xScroll">
-     <property name="geometry">
-      <rect>
-       <x>2</x>
-       <y>204</y>
-       <width>311</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="minimum">
-      <number>200</number>
-     </property>
-     <property name="maximum">
-      <number>800</number>
-     </property>
-     <property name="value">
-      <number>500</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-    <widget class="QScrollBar" name="yScroll">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>16</width>
-       <height>191</height>
-      </rect>
-     </property>
-     <property name="minimum">
-      <number>200</number>
-     </property>
-     <property name="maximum">
-      <number>800</number>
-     </property>
-     <property name="value">
-      <number>500</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="invertedControls">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tab_cap">
-    <attribute name="title">
-     <string>Capture</string>
-    </attribute>
-    <widget class="QPushButton" name="captureStartBtn">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>160</y>
-       <width>81</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Start</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="captureStopBtn">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>200</y>
-       <width>71</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>Stop Capturing</string>
-     </property>
-     <property name="text">
-      <string>Stop</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="startFrameBox">
-     <property name="geometry">
-      <rect>
-       <x>55</x>
-       <y>4</y>
-       <width>71</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="maximum">
-      <number>20000</number>
-     </property>
-     <property name="value">
-      <number>1</number>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="endFrameBox">
-     <property name="geometry">
-      <rect>
-       <x>53</x>
-       <y>26</y>
-       <width>71</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="maximum">
-      <number>20000</number>
-     </property>
-     <property name="singleStep">
-      <number>100</number>
-     </property>
-     <property name="value">
-      <number>3600</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>1</x>
-       <y>6</y>
-       <width>61</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Start on</string>
-     </property>
-    </widget>
-    <widget class="QDoubleSpinBox" name="stopsBox">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>25</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="decimals">
-      <number>1</number>
-     </property>
-     <property name="minimum">
-      <double>0.500000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>5.000000000000000</double>
-     </property>
-     <property name="singleStep">
-      <double>0.500000000000000</double>
-     </property>
-     <property name="value">
-      <double>1.000000000000000</double>
-     </property>
-    </widget>
-    <widget class="QLCDNumber" name="frameLcd">
-     <property name="geometry">
-      <rect>
-       <x>211</x>
-       <y>194</y>
-       <width>101</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="lineWidth">
-      <number>2</number>
-     </property>
-     <property name="segmentStyle">
-      <enum>QLCDNumber::Flat</enum>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="chooseFolderBtn">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>50</y>
-       <width>51</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Folder</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="capFolder">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>50</y>
-       <width>251</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>9</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="placeholderText">
-      <string>Choose Capture Folder</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>1</x>
-       <y>29</y>
-       <width>51</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Frames</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="captureTestBtn">
-     <property name="geometry">
-      <rect>
-       <x>180</x>
-       <y>90</y>
-       <width>41</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Test </string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="setExposureBtn">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>171</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Auto-set/Test Exposure</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="exposureBox">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>160</y>
-       <width>71</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>Minimum shutter speed asked for by the camera</string>
-     </property>
-     <property name="frame">
-      <bool>true</bool>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::NoButtons</enum>
-     </property>
-     <property name="maximum">
-      <number>1000000</number>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="exposureUpBtn">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>90</y>
-       <width>41</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>+1/3</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="exposureDownBtn">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>90</y>
-       <width>41</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>-1/3</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="bracketing">
-     <property name="geometry">
-      <rect>
-       <x>150</x>
-       <y>3</y>
-       <width>41</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="minimum">
-      <number>1</number>
-     </property>
-     <property name="maximum">
-      <number>5</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_20">
-     <property name="geometry">
-      <rect>
-       <x>191</x>
-       <y>4</y>
-       <width>101</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Shots/Frame</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_21">
-     <property name="geometry">
-      <rect>
-       <x>191</x>
-       <y>26</y>
-       <width>41</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Stops</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="captureFrmRev">
-     <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>130</y>
-       <width>51</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>Rewind One Frame</string>
-     </property>
-     <property name="text">
-      <string>&lt;- 1</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="captureFrmAdv">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>130</y>
-       <width>51</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>Advance One Frame</string>
-     </property>
-     <property name="text">
-      <string>1 -&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_11">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>120</y>
-       <width>121</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Shutter (max66k)</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="exposureBoxMin">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>140</y>
-       <width>71</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The 'average' exposure speed as reported by the camera.  Bracketed exposures will be calculated by adjusting this value. Can be manually adjusted using '+/-' buttons above. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="frame">
-      <bool>true</bool>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::NoButtons</enum>
-     </property>
-     <property name="maximum">
-      <number>1000000</number>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="exposureBoxMax">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>180</y>
-       <width>71</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Maximum shutter speed needed by camera in microseconds, based on camera's current 'mid' shutter speed and bracketing settings.  IMPORTANT! This is a target only: if the camera's framerate cannot support it, the it will not be achieved!  If it's too high, try using auto-set to calculate new exposure values, possibly adjusting the gains.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="frame">
-      <bool>true</bool>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::NoButtons</enum>
-     </property>
-     <property name="maximum">
-      <number>1000000</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_13">
-     <property name="geometry">
-      <rect>
-       <x>2</x>
-       <y>206</y>
-       <width>71</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Gains</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="gainBoxA">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>204</y>
-       <width>41</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>Analog Gain reported by camera. Range from 1 to 8.  For low noise should be as near 1 as possible</string>
-     </property>
-     <property name="frame">
-      <bool>true</bool>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::NoButtons</enum>
-     </property>
-     <property name="maximum">
-      <number>1000000</number>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="gainBoxD">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>204</y>
-       <width>41</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>Digital gain reported by camera, from 1-8.  If not near 1, light is too low</string>
-     </property>
-     <property name="frame">
-      <bool>true</bool>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::NoButtons</enum>
-     </property>
-     <property name="maximum">
-      <number>1000000</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_24">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>140</y>
-       <width>31</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Min</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_33">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>160</y>
-       <width>31</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Mid</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_34">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>180</y>
-       <width>31</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Max</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="captureFrmRev_2">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>130</y>
-       <width>51</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>Rewind One Frame</string>
-     </property>
-     <property name="text">
-      <string>&lt;-10</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="captureFrmAdv_2">
-     <property name="geometry">
-      <rect>
-       <x>270</x>
-       <y>130</y>
-       <width>51</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>Advance One Frame</string>
-     </property>
-     <property name="text">
-      <string>10-&gt;</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="pauseBox">
-     <property name="geometry">
-      <rect>
-       <x>215</x>
-       <y>162</y>
-       <width>99</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Pause</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tab">
-    <attribute name="title">
-     <string>Advanced</string>
-    </attribute>
-    <widget class="QCheckBox" name="vflip">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>61</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>vflip</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="hflip">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>0</y>
-       <width>97</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>hflip</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="bw">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>0</y>
-       <width>51</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>b/w</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="drcBox">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>30</y>
-       <width>78</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string notr="true">off</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string notr="true">low</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string notr="true">medium</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string notr="true">high</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QLabel" name="label_4">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>31</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>DRC</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="sharpnessBox">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>30</y>
-       <width>60</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="minimum">
-      <number>-100</number>
-     </property>
-     <property name="maximum">
-      <number>100</number>
-     </property>
-     <property name="value">
-      <number>-100</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_16">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>33</y>
-       <width>71</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Sharpness</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="stillCap">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>60</y>
-       <width>191</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string>When</string>
-     </property>
-     <property name="text">
-      <string>Capture from Stills Port</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="saveinits">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>190</y>
-       <width>231</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string> Save Current Settings as Startup</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>7</x>
-       <y>85</y>
-       <width>141</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Capture Resolution:</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="resolution">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>80</y>
-       <width>121</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>2592x1944</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>1600x1200</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>1440x1080</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>1296x972</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>1024x768</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>800x600</string>
-      </property>
-     </item>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tab_2">
-    <attribute name="title">
-     <string>Smart Cap</string>
-    </attribute>
-    <widget class="QSpinBox" name="blankFrameLimit">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>10</y>
-       <width>41</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="baseSize">
-      <size>
-       <width>100</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Automatically end capture when enough &amp;quot;white&amp;quot; (sufficiently bright) frames are captured in a row.  Experimental, and may not work properly when automatically adjusting shutter speed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::PlusMinus</enum>
-     </property>
-     <property name="maximum">
-      <number>25</number>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="prevPct">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>200</y>
-       <width>65</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="baseSize">
-      <size>
-       <width>100</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If the frame's average brightness differs from the previous frame by more than a set amount, pause the capture to allow manual brightness adjustment.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::PlusMinus</enum>
-     </property>
-     <property name="suffix">
-      <string>%</string>
-     </property>
-     <property name="maximum">
-      <number>100</number>
-     </property>
-     <property name="value">
-      <number>100</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_23">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>170</y>
-       <width>161</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>When diff between last</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_7">
-     <property name="geometry">
-      <rect>
-       <x>143</x>
-       <y>9</y>
-       <width>121</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>blanks (0=disable) </string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_12">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>90</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Auto-stop on</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="last4prev">
-     <property name="geometry">
-      <rect>
-       <x>158</x>
-       <y>170</y>
-       <width>51</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="baseSize">
-      <size>
-       <width>100</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When detecting changes in brightness, compare groups of X frames instead of single frames.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::PlusMinus</enum>
-     </property>
-     <property name="maximum">
-      <number>10</number>
-     </property>
-     <property name="value">
-      <number>5</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_26">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>168</y>
-       <width>51</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&amp; PREV</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_28">
-     <property name="geometry">
-      <rect>
-       <x>232</x>
-       <y>53</y>
-       <width>71</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>per frame</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="deltaSS">
-     <property name="geometry">
-      <rect>
-       <x>75</x>
-       <y>55</y>
-       <width>61</width>
-       <height>28</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="baseSize">
-      <size>
-       <width>100</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If the frame's average brightness differs from the previous frame by more than a set amount, pause the capture to allow manual brightness adjustment.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::PlusMinus</enum>
-     </property>
-     <property name="suffix">
-      <string>%</string>
-     </property>
-     <property name="maximum">
-      <number>100</number>
-     </property>
-     <property name="value">
-      <number>10</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_30">
-     <property name="geometry">
-      <rect>
-       <x>7</x>
-       <y>56</y>
-       <width>71</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Adjust by</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="prevFrames">
-     <property name="geometry">
-      <rect>
-       <x>267</x>
-       <y>168</y>
-       <width>51</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="baseSize">
-      <size>
-       <width>100</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When detecting changes in brightness, compare groups of X frames instead of single frames.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::PlusMinus</enum>
-     </property>
-     <property name="maximum">
-      <number>10</number>
-     </property>
-     <property name="value">
-      <number>5</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_27">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>200</y>
-       <width>61</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>exceeds</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="prevAction">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>200</y>
-       <width>171</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>Pause</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Adjust shutter</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QLabel" name="label_25">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>90</y>
-       <width>161</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>When diff between last</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_29">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>120</y>
-       <width>61</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>exceeds</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="last4init">
-     <property name="geometry">
-      <rect>
-       <x>157</x>
-       <y>90</y>
-       <width>51</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="baseSize">
-      <size>
-       <width>100</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When detecting changes in brightness, compare groups of X frames instead of single frames.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::PlusMinus</enum>
-     </property>
-     <property name="maximum">
-      <number>10</number>
-     </property>
-     <property name="value">
-      <number>5</number>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="initPct">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>120</y>
-       <width>65</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="baseSize">
-      <size>
-       <width>100</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If the frame's average brightness differs from the previous frame by more than a set amount, pause the capture to allow manual brightness adjustment.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::PlusMinus</enum>
-     </property>
-     <property name="suffix">
-      <string>%</string>
-     </property>
-     <property name="maximum">
-      <number>100</number>
-     </property>
-     <property name="value">
-      <number>100</number>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="initFrames">
-     <property name="geometry">
-      <rect>
-       <x>264</x>
-       <y>88</y>
-       <width>51</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="baseSize">
-      <size>
-       <width>100</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When detecting changes in brightness, compare groups of X frames instead of single frames.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::PlusMinus</enum>
-     </property>
-     <property name="maximum">
-      <number>10</number>
-     </property>
-     <property name="value">
-      <number>5</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_31">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>88</y>
-       <width>51</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&amp; FIRST</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="initAction">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>120</y>
-       <width>171</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>Pause</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Adjust shutter</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QSpinBox" name="deltaBrt">
-     <property name="geometry">
-      <rect>
-       <x>162</x>
-       <y>55</y>
-       <width>71</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="baseSize">
-      <size>
-       <width>100</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If the frame's average brightness differs from the previous frame by more than a set amount, pause the capture to allow manual brightness adjustment.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-     <property name="buttonSymbols">
-      <enum>QAbstractSpinBox::PlusMinus</enum>
-     </property>
-     <property name="suffix">
-      <string> brt</string>
-     </property>
-     <property name="maximum">
-      <number>10</number>
-     </property>
-     <property name="value">
-      <number>1</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_32">
-     <property name="geometry">
-      <rect>
-       <x>142</x>
-       <y>56</y>
-       <width>16</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>or</string>
-     </property>
-    </widget>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_2">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>360</y>
-     <width>311</width>
-     <height>151</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Color</string>
-   </property>
-   <widget class="QSlider" name="blueGain">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>30</y>
-      <width>160</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>50</number>
-    </property>
-    <property name="maximum">
-     <number>400</number>
-    </property>
-    <property name="value">
-     <number>200</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QSlider" name="redGain">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>60</y>
-      <width>160</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>50</number>
-    </property>
-    <property name="maximum">
-     <number>250</number>
-    </property>
-    <property name="singleStep">
-     <number>1</number>
-    </property>
-    <property name="pageStep">
-     <number>10</number>
-    </property>
-    <property name="value">
-     <number>100</number>
-    </property>
-    <property name="sliderPosition">
-     <number>100</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>70</y>
-      <width>31</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Red</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>40</y>
-      <width>31</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Blue</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="blueGainBox">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>30</y>
-      <width>60</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>50</number>
-    </property>
-    <property name="maximum">
-     <number>400</number>
-    </property>
-    <property name="value">
-     <number>200</number>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="redGainBox">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>60</y>
-      <width>60</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>50</number>
-    </property>
-    <property name="maximum">
-     <number>250</number>
-    </property>
-    <property name="value">
-     <number>100</number>
-    </property>
-   </widget>
-   <widget class="QSlider" name="saturation">
-    <property name="geometry">
-     <rect>
-      <x>57</x>
-      <y>90</y>
-      <width>131</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>-100</number>
-    </property>
-    <property name="maximum">
-     <number>100</number>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-    <property name="sliderPosition">
-     <number>0</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_10">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>98</y>
-      <width>31</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Sat</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="saturationBox">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>90</y>
-      <width>60</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>-100</number>
-    </property>
-    <property name="maximum">
-     <number>100</number>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="blueResetBtn">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>30</y>
-      <width>51</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reset</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="redResetBtn">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>60</y>
-      <width>51</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reset</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="resetSaturationBtn">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>90</y>
-      <width>51</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reset</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="colorSetBtn">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>0</y>
-      <width>71</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When clicked, Blue and Red color gains will be set to those used by the current WB setting, and auto-white balance will be turned off so that the values may be manually adjusted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="text">
-     <string>Use this</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="awbBox">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>0</y>
-      <width>121</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>1</number>
-    </property>
-    <item>
-     <property name="text">
-      <string notr="true">off</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string notr="true">auto</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string notr="true">sunlight</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string notr="true">cloudy</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>shade</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>tungsten</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>fluorescent</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>incandescent</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>flash</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>horizon</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QPushButton" name="resetContBtn">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>120</y>
-      <width>51</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reset</string>
-    </property>
-   </widget>
-   <widget class="QSlider" name="contrast">
-    <property name="geometry">
-     <rect>
-      <x>57</x>
-      <y>120</y>
-      <width>131</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>-100</number>
-    </property>
-    <property name="maximum">
-     <number>100</number>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-    <property name="sliderPosition">
-     <number>0</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-    <property name="tickPosition">
-     <enum>QSlider::NoTicks</enum>
-    </property>
-    <property name="tickInterval">
-     <number>10</number>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="contrastBox">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>120</y>
-      <width>60</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>-100</number>
-    </property>
-    <property name="maximum">
-     <number>100</number>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_17">
-    <property name="geometry">
-     <rect>
-      <x>-1</x>
-      <y>130</y>
-      <width>31</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Cont</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QWidget" name="verticalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>580</y>
-     <width>321</width>
-     <height>231</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="histogram"/>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_3">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>265</y>
-     <width>321</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Cam Settings</string>
-   </property>
-   <widget class="QLabel" name="label_15">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>30</y>
-      <width>31</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Brt</string>
-    </property>
-   </widget>
-   <widget class="QSlider" name="brightness">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>160</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>0</number>
-    </property>
-    <property name="maximum">
-     <number>100</number>
-    </property>
-    <property name="value">
-     <number>50</number>
-    </property>
-    <property name="sliderPosition">
-     <number>50</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-    <property name="tickPosition">
-     <enum>QSlider::TicksBelow</enum>
-    </property>
-    <property name="tickInterval">
-     <number>10</number>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="brightnessBox">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>20</y>
-      <width>60</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>100</number>
-    </property>
-    <property name="value">
-     <number>50</number>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="resetBrightBtn">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>20</y>
-      <width>51</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reset</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="EV">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>55</y>
-      <width>60</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Changes the effective exposure by 1/6 stop.  This affects previews and the initial setting for capture (plus any smart adjustments).  Changing it during capture will have NO EFFECT unless capture is paused and &amp;quot;Set Exposure&amp;quot; is pressed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="minimum">
-     <number>-25</number>
-    </property>
-    <property name="maximum">
-     <number>25</number>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_22">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>60</y>
-      <width>171</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Exposure Compensation</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QFrame" name="frame">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>510</y>
-     <width>323</width>
-     <height>63</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QLabel" name="pctOverB">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>3</y>
-      <width>41</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: white; color: blue</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Box</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::PlainText</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="pctOverR">
-    <property name="geometry">
-     <rect>
-      <x>64</x>
-      <y>3</y>
-      <width>41</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: white; color: red</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Box</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::PlainText</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="pctOverG">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>3</y>
-      <width>41</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: white; color: green</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Box</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::PlainText</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_14">
-    <property name="geometry">
-     <rect>
-      <x>4</x>
-      <y>20</y>
-      <width>50</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Adj Lo:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_9">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>0</y>
-      <width>31</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>%Lo:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="pctUnder">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>0</y>
-      <width>41</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: white</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Box</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::PlainText</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="pctAvg">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>20</y>
-      <width>41</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: white</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Box</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::PlainText</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_19">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>17</y>
-      <width>31</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Avg:</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="levelLowR">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>20</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    <property name="maximum">
-     <number>127</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_35">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>2</y>
-      <width>31</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>%Hi:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_36">
-    <property name="geometry">
-     <rect>
-      <x>4</x>
-      <y>40</y>
-      <width>50</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Adj Hi:</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="levelHiR">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>40</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    <property name="minimum">
-     <number>128</number>
-    </property>
-    <property name="maximum">
-     <number>255</number>
-    </property>
-    <property name="value">
-     <number>255</number>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="levelHiG">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>40</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    <property name="minimum">
-     <number>128</number>
-    </property>
-    <property name="maximum">
-     <number>255</number>
-    </property>
-    <property name="value">
-     <number>255</number>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="levelLowG">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>20</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    <property name="maximum">
-     <number>127</number>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="levelHiB">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>40</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    <property name="minimum">
-     <number>128</number>
-    </property>
-    <property name="maximum">
-     <number>255</number>
-    </property>
-    <property name="value">
-     <number>255</number>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="levelLowB">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>20</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    <property name="maximum">
-     <number>127</number>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkBox">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>40</y>
-      <width>99</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>SBS Orig</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QLabel" name="statusBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>810</y>
-     <width>321</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Program Started</string>
-   </property>
-  </widget>
- </widget>
- <resources/>
- <connections>
-  <connection>
-   <sender>blueGain</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setGainBlue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>162</x>
-     <y>398</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>243</x>
-     <y>260</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>redGain</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setGainRed(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>113</x>
-     <y>423</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>243</x>
-     <y>304</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>redGain</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>redGainBox</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>180</x>
-     <y>427</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>211</x>
-     <y>425</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>blueGain</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>blueGainBox</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>179</x>
-     <y>393</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>231</x>
-     <y>390</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>redGainBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>redGain</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>225</x>
-     <y>428</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>143</x>
-     <y>420</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>blueGainBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>blueGain</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>227</x>
-     <y>396</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>60</x>
-     <y>393</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>blueGainBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setGainBlue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>229</x>
-     <y>390</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>240</x>
-     <y>335</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>redGainBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setGainRed(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>426</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>497</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>brightness</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>brightnessBox</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>137</x>
-     <y>326</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>200</x>
-     <y>325</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>brightnessBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>brightness</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>227</x>
-     <y>315</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>169</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>brightnessBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setBright(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>224</x>
-     <y>331</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>329</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>saturationBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setSaturation(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>210</x>
-     <y>455</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>447</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>saturationBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>saturation</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>202</x>
-     <y>451</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>99</x>
-     <y>456</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>saturation</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>saturationBox</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>77</x>
-     <y>453</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>198</x>
-     <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>resetBrightBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>resetBright()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>282</x>
-     <y>352</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>357</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>resetContBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>resetContrast()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>283</x>
-     <y>506</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>390</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>blueResetBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>resetGainBlue()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>296</x>
-     <y>406</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>435</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>redResetBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>resetGainRed()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>284</x>
-     <y>436</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>476</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>resetSaturationBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>resetSaturation()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>271</x>
-     <y>466</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>514</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>contrast</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>contrastBox</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>174</x>
-     <y>508</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>196</x>
-     <y>506</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>contrastBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>contrast</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>192</x>
-     <y>506</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>156</x>
-     <y>508</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>contrastBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setContrast(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>194</x>
-     <y>506</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>323</x>
-     <y>546</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>colorSetBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>colorSet()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>255</x>
-     <y>364</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>270</x>
-     <y>599</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>awbBox</sender>
-   <signal>currentIndexChanged(QString)</signal>
-   <receiver>Form1</receiver>
-   <slot>setAWBmode(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>122</x>
-     <y>372</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>129</x>
-     <y>619</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>EV</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setEV(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>198</x>
-     <y>342</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>204</x>
-     <y>693</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>vflip</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>Form1</receiver>
-   <slot>setVFlip(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>55</x>
-     <y>49</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>55</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>captureStartBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>captureStart()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>202</x>
-     <y>217</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>44</x>
-     <y>296</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>stopButton</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>motorStop()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>185</x>
-     <y>127</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>74</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>hflip</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>Form1</receiver>
-   <slot>setHFlip(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>111</x>
-     <y>47</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>12</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tabWidget</sender>
-   <signal>currentChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>tabChanged(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>18</x>
-     <y>20</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>323</x>
-     <y>72</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>sharpnessBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setSharpness(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>215</x>
-     <y>87</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>149</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>reverseButton</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>motorRev()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>155</x>
-     <y>127</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>24</x>
-     <y>281</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>forwardButton</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>motorFwd()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>235</x>
-     <y>127</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>118</x>
-     <y>282</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lightCheckbox</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>Form1</receiver>
-   <slot>lightSet(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>236</x>
-     <y>62</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>142</x>
-     <y>280</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>captureStopBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>captureEnd()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>202</x>
-     <y>257</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>201</x>
-     <y>290</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>chooseFolderBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>chooseFolder()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>289</x>
-     <y>107</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>243</x>
-     <y>172</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>endFrameBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setEndFrame(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>101</x>
-     <y>72</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>243</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>bw</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>blueGain</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>145</x>
-     <y>52</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>55</x>
-     <y>396</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>startFrameBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setStartFrame(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>91</x>
-     <y>55</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>243</x>
-     <y>48</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>stopsBox</sender>
-   <signal>valueChanged(double)</signal>
-   <receiver>Form1</receiver>
-   <slot>setBlendStops(double)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>192</x>
-     <y>76</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>243</x>
-     <y>233</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>bw</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>redGain</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>145</x>
-     <y>52</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>37</x>
-     <y>420</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>drcBox</sender>
-   <signal>currentIndexChanged(QString)</signal>
-   <receiver>Form1</receiver>
-   <slot>setDrc(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>85</x>
-     <y>87</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>156</x>
-     <y>251</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>prevCheckBox</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>Form1</receiver>
-   <slot>previewSet(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>282</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>201</x>
-     <y>369</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>loadConfigButton</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>loadConfig()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>112</x>
-     <y>183</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>125</x>
-     <y>262</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>bw</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>Form1</receiver>
-   <slot>setBW(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>145</x>
-     <y>52</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>99</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>captureTestBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>takeTestPhoto()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>184</x>
-     <y>147</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>272</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>exposureUpBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>setExposureUp()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>296</x>
-     <y>141</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>307</x>
-     <y>216</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>setExposureBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>setExposure()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>74</x>
-     <y>147</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>323</x>
-     <y>194</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>saveConfigButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>saveConfig()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>182</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>323</x>
-     <y>179</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>saveConfigButton</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>saveCurrentConfig()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>177</x>
-     <y>182</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>283</x>
-     <y>531</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>yScroll</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setY(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>12</x>
-     <y>185</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>323</x>
-     <y>243</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>xScroll</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setX(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>185</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>323</x>
-     <y>291</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>exposureDownBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>setExposureDown()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>262</x>
-     <y>141</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>208</x>
-     <y>374</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>bracketing</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setBlend(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>172</x>
-     <y>44</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>163</x>
-     <y>374</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>stillCap</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>Form1</receiver>
-   <slot>setStillPort(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>146</x>
-     <y>112</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>153</x>
-     <y>559</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>zoomDial</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setZoom(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>80</x>
-     <y>102</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>323</x>
-     <y>112</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Form1</sender>
-   <signal>frameCaptured(int)</signal>
-   <receiver>frameLcd</receiver>
-   <slot>display(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>162</x>
-     <y>385</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>270</x>
-     <y>243</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fRevButton</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>motorfrev()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>127</x>
-     <y>114</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>161</x>
-     <y>397</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ffdButton</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>motorffd()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>275</x>
-     <y>121</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>265</x>
-     <y>713</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>captureFrmAdv</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>capFrameAdv()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>246</x>
-     <y>168</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>323</x>
-     <y>163</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>captureFrmRev</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>capFrameRev()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>207</x>
-     <y>175</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>323</x>
-     <y>168</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>captureFrmRev_2</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>capFrameRev10()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>138</x>
-     <y>184</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>323</x>
-     <y>137</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>captureFrmAdv_2</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>capFrameAdv10()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>296</x>
-     <y>176</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>323</x>
-     <y>124</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>autoExpCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>Form1</receiver>
-   <slot>setAutoExp(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>264</x>
-     <y>90</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>323</x>
-     <y>28</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pauseBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>Form1</receiver>
-   <slot>capturePause(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>242</x>
-     <y>204</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>83</x>
-     <y>573</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>resolution</sender>
-   <signal>currentIndexChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setCapRes(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>194</x>
-     <y>131</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>111</x>
-     <y>556</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>levelLowR</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setAdjLowR(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>85</x>
-     <y>546</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>67</x>
-     <y>871</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>levelHiR</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setAdjHiR(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>95</x>
-     <y>558</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>102</x>
-     <y>880</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>levelLowG</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setAdjLowG(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>142</x>
-     <y>537</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>127</x>
-     <y>847</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>levelHiG</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setAdjHiG(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>153</x>
-     <y>562</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>142</x>
-     <y>828</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>levelLowB</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setAdjLowB(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>184</x>
-     <y>542</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>199</x>
-     <y>840</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>levelHiB</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>Form1</receiver>
-   <slot>setAdjHiB(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>192</x>
-     <y>563</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>193</x>
-     <y>891</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
- <slots>
-  <signal>gotFolder(str)</signal>
-  <signal>frameCaptured(int)</signal>
-  <slot>printInt(int)</slot>
-  <slot>motorFwd()</slot>
-  <slot>motorStop()</slot>
-  <slot>motorRev()</slot>
-  <slot>motorSpeed(int)</slot>
-  <slot>lightSet(bool)</slot>
-  <slot>frameUp()</slot>
-  <slot>frameDown()</slot>
-  <slot>frameLeft()</slot>
-  <slot>frameRight()</slot>
-  <slot>zoomIn()</slot>
-  <slot>zoomOut()</slot>
-  <slot>captureStart()</slot>
-  <slot>captureEnd()</slot>
-  <slot>capturePauseToggle()</slot>
-  <slot>chooseFolder()</slot>
-  <slot>setBlend(bool)</slot>
-  <slot>setEndFrame(int)</slot>
-  <slot>setStartFrame(int)</slot>
-  <slot>setBlendStops(double)</slot>
-  <slot>setGainBlue(int)</slot>
-  <slot>setGainRed(int)</slot>
-  <slot>previewSet(bool)</slot>
-  <slot>setDrc(QString)</slot>
-  <slot>loadConfig()</slot>
-  <slot>saveConfig()</slot>
-  <slot>setBright(int)</slot>
-  <slot>setSharpness(int)</slot>
-  <slot>setHFlip(bool)</slot>
-  <slot>setVFlip(bool)</slot>
-  <slot>setSaturation(int)</slot>
-  <slot>setBW(bool)</slot>
-  <slot>setBlankDetect(bool)</slot>
-  <slot>setBlankLimit(int)</slot>
-  <slot>setExposureDown()</slot>
-  <slot>setExposureUp()</slot>
-  <slot>setExposureValue()</slot>
-  <slot>setExposure()</slot>
-  <slot>takeTestPhoto()</slot>
-  <slot>resetBright()</slot>
-  <slot>resetContrast()</slot>
-  <slot>resetGainBlue()</slot>
-  <slot>resetGainRed()</slot>
-  <slot>resetSaturation()</slot>
-  <slot>tabChanged(int)</slot>
-  <slot>saveCurrentConfig()</slot>
-  <slot>setContrast(int)</slot>
-  <slot>autowhite(bool)</slot>
-  <slot>setZoom(int)</slot>
-  <slot>setX(int)</slot>
-  <slot>setY(int)</slot>
-  <slot>setDriveSpeed(int)</slot>
-  <slot>setBlend(int)</slot>
-  <slot>setStillPort(bool)</slot>
-  <slot>colorSet()</slot>
-  <slot>setAWBmode(QString)</slot>
-  <slot>setEV(int)</slot>
-  <slot>saveInits()</slot>
-  <slot>setCapRes(int)</slot>
-  <slot>motorffd()</slot>
-  <slot>motorfrev()</slot>
-  <slot>capFrameAdv()</slot>
-  <slot>capFrameRev()</slot>
-  <slot>capFrameAdv10()</slot>
-  <slot>capFrameRev10()</slot>
-  <slot>setAutoExp(bool)</slot>
-  <slot>capturePause(bool)</slot>
-  <slot>setAdjLowR(int)</slot>
-  <slot>setAdjHiR(int)</slot>
-  <slot>setAdjLowG(int)</slot>
-  <slot>setAdjHiG(int)</slot>
-  <slot>setAdjLowB(int)</slot>
-  <slot>setAdjHiB(int)</slot>
- </slots>
-</ui>
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'fcClientgui2.ui'
+#
+# Created by: PyQt4 UI code generator 4.11.4
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt4 import QtCore, QtGui
+
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
+
+class Ui_Form1(object):
+    def setupUi(self, Form1):
+        Form1.setObjectName(_fromUtf8("Form1"))
+        Form1.resize(324, 831)
+        self.tabWidget = QtGui.QTabWidget(Form1)
+        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 323, 261))
+        self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
+        self.tab_setup = QtGui.QWidget()
+        self.tab_setup.setObjectName(_fromUtf8("tab_setup"))
+        self.PictureControls = QtGui.QFrame(self.tab_setup)
+        self.PictureControls.setGeometry(QtCore.QRect(20, 10, 291, 91))
+        self.PictureControls.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.PictureControls.setFrameShadow(QtGui.QFrame.Raised)
+        self.PictureControls.setObjectName(_fromUtf8("PictureControls"))
+        self.lightCheckbox = QtGui.QCheckBox(self.PictureControls)
+        self.lightCheckbox.setGeometry(QtCore.QRect(180, 0, 61, 22))
+        self.lightCheckbox.setFocusPolicy(QtCore.Qt.TabFocus)
+        self.lightCheckbox.setObjectName(_fromUtf8("lightCheckbox"))
+        self.prevCheckBox = QtGui.QCheckBox(self.PictureControls)
+        self.prevCheckBox.setGeometry(QtCore.QRect(180, 20, 81, 22))
+        self.prevCheckBox.setObjectName(_fromUtf8("prevCheckBox"))
+        self.zoomDial = QtGui.QDial(self.PictureControls)
+        self.zoomDial.setGeometry(QtCore.QRect(-1, 0, 91, 81))
+        self.zoomDial.setMinimum(400)
+        self.zoomDial.setMaximum(1000)
+        self.zoomDial.setProperty("value", 700)
+        self.zoomDial.setNotchTarget(25.0)
+        self.zoomDial.setNotchesVisible(True)
+        self.zoomDial.setObjectName(_fromUtf8("zoomDial"))
+        self.label_6 = QtGui.QLabel(self.PictureControls)
+        self.label_6.setGeometry(QtCore.QRect(10, 74, 71, 17))
+        self.label_6.setObjectName(_fromUtf8("label_6"))
+        self.reverseButton = QtGui.QPushButton(self.PictureControls)
+        self.reverseButton.setGeometry(QtCore.QRect(120, 60, 31, 27))
+        self.reverseButton.setObjectName(_fromUtf8("reverseButton"))
+        self.stopButton = QtGui.QPushButton(self.PictureControls)
+        self.stopButton.setGeometry(QtCore.QRect(160, 60, 41, 27))
+        self.stopButton.setObjectName(_fromUtf8("stopButton"))
+        self.forwardButton = QtGui.QPushButton(self.PictureControls)
+        self.forwardButton.setGeometry(QtCore.QRect(210, 60, 31, 27))
+        self.forwardButton.setObjectName(_fromUtf8("forwardButton"))
+        self.ffdButton = QtGui.QPushButton(self.PictureControls)
+        self.ffdButton.setGeometry(QtCore.QRect(240, 60, 31, 27))
+        self.ffdButton.setObjectName(_fromUtf8("ffdButton"))
+        self.fRevButton = QtGui.QPushButton(self.PictureControls)
+        self.fRevButton.setGeometry(QtCore.QRect(90, 60, 31, 27))
+        self.fRevButton.setObjectName(_fromUtf8("fRevButton"))
+        self.autoExpCheckBox = QtGui.QCheckBox(self.PictureControls)
+        self.autoExpCheckBox.setGeometry(QtCore.QRect(180, 40, 91, 22))
+        self.autoExpCheckBox.setChecked(True)
+        self.autoExpCheckBox.setObjectName(_fromUtf8("autoExpCheckBox"))
+        self.lightCheckbox.raise_()
+        self.prevCheckBox.raise_()
+        self.label_6.raise_()
+        self.zoomDial.raise_()
+        self.reverseButton.raise_()
+        self.stopButton.raise_()
+        self.forwardButton.raise_()
+        self.ffdButton.raise_()
+        self.fRevButton.raise_()
+        self.autoExpCheckBox.raise_()
+        self.ConfigControls = QtGui.QFrame(self.tab_setup)
+        self.ConfigControls.setGeometry(QtCore.QRect(20, 120, 291, 71))
+        self.ConfigControls.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.ConfigControls.setFrameShadow(QtGui.QFrame.Raised)
+        self.ConfigControls.setObjectName(_fromUtf8("ConfigControls"))
+        self.loadConfigButton = QtGui.QPushButton(self.ConfigControls)
+        self.loadConfigButton.setGeometry(QtCore.QRect(87, 6, 61, 27))
+        self.loadConfigButton.setObjectName(_fromUtf8("loadConfigButton"))
+        self.saveConfigButton = QtGui.QPushButton(self.ConfigControls)
+        self.saveConfigButton.setGeometry(QtCore.QRect(152, 5, 41, 27))
+        self.saveConfigButton.setObjectName(_fromUtf8("saveConfigButton"))
+        self.configFile = QtGui.QLineEdit(self.ConfigControls)
+        self.configFile.setGeometry(QtCore.QRect(5, 35, 271, 27))
+        self.configFile.setObjectName(_fromUtf8("configFile"))
+        self.saveConfigButton_2 = QtGui.QPushButton(self.ConfigControls)
+        self.saveConfigButton_2.setGeometry(QtCore.QRect(200, 5, 81, 27))
+        self.saveConfigButton_2.setObjectName(_fromUtf8("saveConfigButton_2"))
+        self.label_18 = QtGui.QLabel(self.ConfigControls)
+        self.label_18.setGeometry(QtCore.QRect(9, 11, 71, 20))
+        self.label_18.setObjectName(_fromUtf8("label_18"))
+        self.xScroll = QtGui.QScrollBar(self.tab_setup)
+        self.xScroll.setGeometry(QtCore.QRect(2, 204, 311, 20))
+        self.xScroll.setMinimum(200)
+        self.xScroll.setMaximum(800)
+        self.xScroll.setProperty("value", 500)
+        self.xScroll.setOrientation(QtCore.Qt.Horizontal)
+        self.xScroll.setObjectName(_fromUtf8("xScroll"))
+        self.yScroll = QtGui.QScrollBar(self.tab_setup)
+        self.yScroll.setGeometry(QtCore.QRect(0, 0, 16, 191))
+        self.yScroll.setMinimum(200)
+        self.yScroll.setMaximum(800)
+        self.yScroll.setProperty("value", 500)
+        self.yScroll.setOrientation(QtCore.Qt.Vertical)
+        self.yScroll.setInvertedControls(False)
+        self.yScroll.setObjectName(_fromUtf8("yScroll"))
+        self.tabWidget.addTab(self.tab_setup, _fromUtf8(""))
+        self.tab_cap = QtGui.QWidget()
+        self.tab_cap.setObjectName(_fromUtf8("tab_cap"))
+        self.captureStartBtn = QtGui.QPushButton(self.tab_cap)
+        self.captureStartBtn.setGeometry(QtCore.QRect(120, 160, 81, 27))
+        self.captureStartBtn.setObjectName(_fromUtf8("captureStartBtn"))
+        self.captureStopBtn = QtGui.QPushButton(self.tab_cap)
+        self.captureStopBtn.setGeometry(QtCore.QRect(130, 200, 71, 27))
+        self.captureStopBtn.setObjectName(_fromUtf8("captureStopBtn"))
+        self.startFrameBox = QtGui.QSpinBox(self.tab_cap)
+        self.startFrameBox.setGeometry(QtCore.QRect(55, 4, 71, 21))
+        self.startFrameBox.setMaximum(20000)
+        self.startFrameBox.setProperty("value", 1)
+        self.startFrameBox.setObjectName(_fromUtf8("startFrameBox"))
+        self.endFrameBox = QtGui.QSpinBox(self.tab_cap)
+        self.endFrameBox.setGeometry(QtCore.QRect(53, 26, 71, 21))
+        self.endFrameBox.setMaximum(20000)
+        self.endFrameBox.setSingleStep(100)
+        self.endFrameBox.setProperty("value", 3600)
+        self.endFrameBox.setObjectName(_fromUtf8("endFrameBox"))
+        self.label_2 = QtGui.QLabel(self.tab_cap)
+        self.label_2.setGeometry(QtCore.QRect(1, 6, 61, 20))
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.stopsBox = QtGui.QDoubleSpinBox(self.tab_cap)
+        self.stopsBox.setGeometry(QtCore.QRect(140, 25, 51, 21))
+        self.stopsBox.setDecimals(1)
+        self.stopsBox.setMinimum(0.5)
+        self.stopsBox.setMaximum(5.0)
+        self.stopsBox.setSingleStep(0.5)
+        self.stopsBox.setProperty("value", 1.0)
+        self.stopsBox.setObjectName(_fromUtf8("stopsBox"))
+        self.frameLcd = QtGui.QLCDNumber(self.tab_cap)
+        self.frameLcd.setGeometry(QtCore.QRect(211, 194, 101, 31))
+        self.frameLcd.setLineWidth(2)
+        self.frameLcd.setSegmentStyle(QtGui.QLCDNumber.Flat)
+        self.frameLcd.setObjectName(_fromUtf8("frameLcd"))
+        self.chooseFolderBtn = QtGui.QPushButton(self.tab_cap)
+        self.chooseFolderBtn.setGeometry(QtCore.QRect(260, 50, 51, 27))
+        self.chooseFolderBtn.setObjectName(_fromUtf8("chooseFolderBtn"))
+        self.capFolder = QtGui.QLineEdit(self.tab_cap)
+        self.capFolder.setGeometry(QtCore.QRect(0, 50, 251, 27))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        self.capFolder.setFont(font)
+        self.capFolder.setText(_fromUtf8(""))
+        self.capFolder.setObjectName(_fromUtf8("capFolder"))
+        self.label_3 = QtGui.QLabel(self.tab_cap)
+        self.label_3.setGeometry(QtCore.QRect(1, 29, 51, 16))
+        self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.captureTestBtn = QtGui.QPushButton(self.tab_cap)
+        self.captureTestBtn.setGeometry(QtCore.QRect(180, 90, 41, 27))
+        self.captureTestBtn.setObjectName(_fromUtf8("captureTestBtn"))
+        self.setExposureBtn = QtGui.QPushButton(self.tab_cap)
+        self.setExposureBtn.setGeometry(QtCore.QRect(10, 90, 171, 27))
+        self.setExposureBtn.setObjectName(_fromUtf8("setExposureBtn"))
+        self.exposureBox = QtGui.QSpinBox(self.tab_cap)
+        self.exposureBox.setGeometry(QtCore.QRect(30, 160, 71, 21))
+        self.exposureBox.setFrame(True)
+        self.exposureBox.setReadOnly(True)
+        self.exposureBox.setButtonSymbols(QtGui.QAbstractSpinBox.NoButtons)
+        self.exposureBox.setMaximum(1000000)
+        self.exposureBox.setObjectName(_fromUtf8("exposureBox"))
+        self.exposureUpBtn = QtGui.QPushButton(self.tab_cap)
+        self.exposureUpBtn.setGeometry(QtCore.QRect(260, 90, 41, 21))
+        self.exposureUpBtn.setObjectName(_fromUtf8("exposureUpBtn"))
+        self.exposureDownBtn = QtGui.QPushButton(self.tab_cap)
+        self.exposureDownBtn.setGeometry(QtCore.QRect(220, 90, 41, 21))
+        self.exposureDownBtn.setObjectName(_fromUtf8("exposureDownBtn"))
+        self.bracketing = QtGui.QSpinBox(self.tab_cap)
+        self.bracketing.setGeometry(QtCore.QRect(150, 3, 41, 21))
+        self.bracketing.setMinimum(1)
+        self.bracketing.setMaximum(5)
+        self.bracketing.setObjectName(_fromUtf8("bracketing"))
+        self.label_20 = QtGui.QLabel(self.tab_cap)
+        self.label_20.setGeometry(QtCore.QRect(191, 4, 101, 17))
+        self.label_20.setObjectName(_fromUtf8("label_20"))
+        self.label_21 = QtGui.QLabel(self.tab_cap)
+        self.label_21.setGeometry(QtCore.QRect(191, 26, 41, 21))
+        self.label_21.setObjectName(_fromUtf8("label_21"))
+        self.captureFrmRev = QtGui.QPushButton(self.tab_cap)
+        self.captureFrmRev.setGeometry(QtCore.QRect(170, 130, 51, 27))
+        self.captureFrmRev.setObjectName(_fromUtf8("captureFrmRev"))
+        self.captureFrmAdv = QtGui.QPushButton(self.tab_cap)
+        self.captureFrmAdv.setGeometry(QtCore.QRect(220, 130, 51, 27))
+        self.captureFrmAdv.setObjectName(_fromUtf8("captureFrmAdv"))
+        self.label_11 = QtGui.QLabel(self.tab_cap)
+        self.label_11.setGeometry(QtCore.QRect(0, 120, 121, 17))
+        self.label_11.setObjectName(_fromUtf8("label_11"))
+        self.exposureBoxMin = QtGui.QSpinBox(self.tab_cap)
+        self.exposureBoxMin.setGeometry(QtCore.QRect(30, 140, 71, 21))
+        self.exposureBoxMin.setFrame(True)
+        self.exposureBoxMin.setReadOnly(True)
+        self.exposureBoxMin.setButtonSymbols(QtGui.QAbstractSpinBox.NoButtons)
+        self.exposureBoxMin.setMaximum(1000000)
+        self.exposureBoxMin.setObjectName(_fromUtf8("exposureBoxMin"))
+        self.exposureBoxMax = QtGui.QSpinBox(self.tab_cap)
+        self.exposureBoxMax.setGeometry(QtCore.QRect(30, 180, 71, 21))
+        self.exposureBoxMax.setFrame(True)
+        self.exposureBoxMax.setReadOnly(True)
+        self.exposureBoxMax.setButtonSymbols(QtGui.QAbstractSpinBox.NoButtons)
+        self.exposureBoxMax.setMaximum(1000000)
+        self.exposureBoxMax.setObjectName(_fromUtf8("exposureBoxMax"))
+        self.label_13 = QtGui.QLabel(self.tab_cap)
+        self.label_13.setGeometry(QtCore.QRect(2, 206, 71, 17))
+        self.label_13.setObjectName(_fromUtf8("label_13"))
+        self.gainBoxA = QtGui.QSpinBox(self.tab_cap)
+        self.gainBoxA.setGeometry(QtCore.QRect(40, 204, 41, 21))
+        self.gainBoxA.setFrame(True)
+        self.gainBoxA.setReadOnly(True)
+        self.gainBoxA.setButtonSymbols(QtGui.QAbstractSpinBox.NoButtons)
+        self.gainBoxA.setMaximum(1000000)
+        self.gainBoxA.setObjectName(_fromUtf8("gainBoxA"))
+        self.gainBoxD = QtGui.QSpinBox(self.tab_cap)
+        self.gainBoxD.setGeometry(QtCore.QRect(80, 204, 41, 21))
+        self.gainBoxD.setFrame(True)
+        self.gainBoxD.setReadOnly(True)
+        self.gainBoxD.setButtonSymbols(QtGui.QAbstractSpinBox.NoButtons)
+        self.gainBoxD.setMaximum(1000000)
+        self.gainBoxD.setObjectName(_fromUtf8("gainBoxD"))
+        self.label_24 = QtGui.QLabel(self.tab_cap)
+        self.label_24.setGeometry(QtCore.QRect(0, 140, 31, 17))
+        self.label_24.setObjectName(_fromUtf8("label_24"))
+        self.label_33 = QtGui.QLabel(self.tab_cap)
+        self.label_33.setGeometry(QtCore.QRect(0, 160, 31, 17))
+        self.label_33.setObjectName(_fromUtf8("label_33"))
+        self.label_34 = QtGui.QLabel(self.tab_cap)
+        self.label_34.setGeometry(QtCore.QRect(0, 180, 31, 17))
+        self.label_34.setObjectName(_fromUtf8("label_34"))
+        self.captureFrmRev_2 = QtGui.QPushButton(self.tab_cap)
+        self.captureFrmRev_2.setGeometry(QtCore.QRect(120, 130, 51, 27))
+        self.captureFrmRev_2.setObjectName(_fromUtf8("captureFrmRev_2"))
+        self.captureFrmAdv_2 = QtGui.QPushButton(self.tab_cap)
+        self.captureFrmAdv_2.setGeometry(QtCore.QRect(270, 130, 51, 27))
+        self.captureFrmAdv_2.setObjectName(_fromUtf8("captureFrmAdv_2"))
+        self.pauseBox = QtGui.QCheckBox(self.tab_cap)
+        self.pauseBox.setGeometry(QtCore.QRect(215, 162, 99, 22))
+        self.pauseBox.setObjectName(_fromUtf8("pauseBox"))
+        self.tabWidget.addTab(self.tab_cap, _fromUtf8(""))
+        self.tab = QtGui.QWidget()
+        self.tab.setObjectName(_fromUtf8("tab"))
+        self.vflip = QtGui.QCheckBox(self.tab)
+        self.vflip.setGeometry(QtCore.QRect(0, 0, 61, 22))
+        self.vflip.setObjectName(_fromUtf8("vflip"))
+        self.hflip = QtGui.QCheckBox(self.tab)
+        self.hflip.setGeometry(QtCore.QRect(70, 0, 97, 22))
+        self.hflip.setObjectName(_fromUtf8("hflip"))
+        self.bw = QtGui.QCheckBox(self.tab)
+        self.bw.setGeometry(QtCore.QRect(140, 0, 51, 22))
+        self.bw.setObjectName(_fromUtf8("bw"))
+        self.drcBox = QtGui.QComboBox(self.tab)
+        self.drcBox.setGeometry(QtCore.QRect(50, 30, 78, 27))
+        self.drcBox.setObjectName(_fromUtf8("drcBox"))
+        self.drcBox.addItem(_fromUtf8(""))
+        self.drcBox.setItemText(0, _fromUtf8("off"))
+        self.drcBox.addItem(_fromUtf8(""))
+        self.drcBox.setItemText(1, _fromUtf8("low"))
+        self.drcBox.addItem(_fromUtf8(""))
+        self.drcBox.setItemText(2, _fromUtf8("medium"))
+        self.drcBox.addItem(_fromUtf8(""))
+        self.drcBox.setItemText(3, _fromUtf8("high"))
+        self.label_4 = QtGui.QLabel(self.tab)
+        self.label_4.setGeometry(QtCore.QRect(10, 30, 31, 20))
+        self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.sharpnessBox = QtGui.QSpinBox(self.tab)
+        self.sharpnessBox.setGeometry(QtCore.QRect(210, 30, 60, 27))
+        self.sharpnessBox.setMinimum(-100)
+        self.sharpnessBox.setMaximum(100)
+        self.sharpnessBox.setProperty("value", -100)
+        self.sharpnessBox.setObjectName(_fromUtf8("sharpnessBox"))
+        self.label_16 = QtGui.QLabel(self.tab)
+        self.label_16.setGeometry(QtCore.QRect(140, 33, 71, 20))
+        self.label_16.setObjectName(_fromUtf8("label_16"))
+        self.stillCap = QtGui.QCheckBox(self.tab)
+        self.stillCap.setGeometry(QtCore.QRect(0, 60, 191, 22))
+        self.stillCap.setObjectName(_fromUtf8("stillCap"))
+        self.saveinits = QtGui.QPushButton(self.tab)
+        self.saveinits.setGeometry(QtCore.QRect(30, 190, 231, 27))
+        self.saveinits.setObjectName(_fromUtf8("saveinits"))
+        self.label = QtGui.QLabel(self.tab)
+        self.label.setGeometry(QtCore.QRect(7, 85, 141, 17))
+        self.label.setObjectName(_fromUtf8("label"))
+        self.resolution = QtGui.QComboBox(self.tab)
+        self.resolution.setGeometry(QtCore.QRect(160, 80, 121, 27))
+        self.resolution.setObjectName(_fromUtf8("resolution"))
+        self.resolution.addItem(_fromUtf8(""))
+        self.resolution.addItem(_fromUtf8(""))
+        self.resolution.addItem(_fromUtf8(""))
+        self.resolution.addItem(_fromUtf8(""))
+        self.resolution.addItem(_fromUtf8(""))
+        self.resolution.addItem(_fromUtf8(""))
+        self.tabWidget.addTab(self.tab, _fromUtf8(""))
+        self.tab_2 = QtGui.QWidget()
+        self.tab_2.setObjectName(_fromUtf8("tab_2"))
+        self.blankFrameLimit = QtGui.QSpinBox(self.tab_2)
+        self.blankFrameLimit.setGeometry(QtCore.QRect(100, 10, 41, 27))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.blankFrameLimit.sizePolicy().hasHeightForWidth())
+        self.blankFrameLimit.setSizePolicy(sizePolicy)
+        self.blankFrameLimit.setBaseSize(QtCore.QSize(100, 0))
+        self.blankFrameLimit.setReadOnly(False)
+        self.blankFrameLimit.setButtonSymbols(QtGui.QAbstractSpinBox.PlusMinus)
+        self.blankFrameLimit.setMaximum(25)
+        self.blankFrameLimit.setObjectName(_fromUtf8("blankFrameLimit"))
+        self.prevPct = QtGui.QSpinBox(self.tab_2)
+        self.prevPct.setGeometry(QtCore.QRect(60, 200, 65, 27))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.prevPct.sizePolicy().hasHeightForWidth())
+        self.prevPct.setSizePolicy(sizePolicy)
+        self.prevPct.setBaseSize(QtCore.QSize(100, 0))
+        self.prevPct.setReadOnly(False)
+        self.prevPct.setButtonSymbols(QtGui.QAbstractSpinBox.PlusMinus)
+        self.prevPct.setMaximum(100)
+        self.prevPct.setProperty("value", 100)
+        self.prevPct.setObjectName(_fromUtf8("prevPct"))
+        self.label_23 = QtGui.QLabel(self.tab_2)
+        self.label_23.setGeometry(QtCore.QRect(0, 170, 161, 29))
+        self.label_23.setObjectName(_fromUtf8("label_23"))
+        self.label_7 = QtGui.QLabel(self.tab_2)
+        self.label_7.setGeometry(QtCore.QRect(143, 9, 121, 29))
+        self.label_7.setObjectName(_fromUtf8("label_7"))
+        self.label_12 = QtGui.QLabel(self.tab_2)
+        self.label_12.setGeometry(QtCore.QRect(10, 10, 90, 29))
+        self.label_12.setObjectName(_fromUtf8("label_12"))
+        self.last4prev = QtGui.QSpinBox(self.tab_2)
+        self.last4prev.setGeometry(QtCore.QRect(158, 170, 51, 27))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.last4prev.sizePolicy().hasHeightForWidth())
+        self.last4prev.setSizePolicy(sizePolicy)
+        self.last4prev.setBaseSize(QtCore.QSize(100, 0))
+        self.last4prev.setReadOnly(False)
+        self.last4prev.setButtonSymbols(QtGui.QAbstractSpinBox.PlusMinus)
+        self.last4prev.setMaximum(10)
+        self.last4prev.setProperty("value", 5)
+        self.last4prev.setObjectName(_fromUtf8("last4prev"))
+        self.label_26 = QtGui.QLabel(self.tab_2)
+        self.label_26.setGeometry(QtCore.QRect(210, 168, 51, 29))
+        self.label_26.setObjectName(_fromUtf8("label_26"))
+        self.label_28 = QtGui.QLabel(self.tab_2)
+        self.label_28.setGeometry(QtCore.QRect(232, 53, 71, 29))
+        self.label_28.setObjectName(_fromUtf8("label_28"))
+        self.deltaSS = QtGui.QSpinBox(self.tab_2)
+        self.deltaSS.setGeometry(QtCore.QRect(75, 55, 61, 28))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.deltaSS.sizePolicy().hasHeightForWidth())
+        self.deltaSS.setSizePolicy(sizePolicy)
+        self.deltaSS.setBaseSize(QtCore.QSize(100, 0))
+        self.deltaSS.setReadOnly(False)
+        self.deltaSS.setButtonSymbols(QtGui.QAbstractSpinBox.PlusMinus)
+        self.deltaSS.setMaximum(100)
+        self.deltaSS.setProperty("value", 10)
+        self.deltaSS.setObjectName(_fromUtf8("deltaSS"))
+        self.label_30 = QtGui.QLabel(self.tab_2)
+        self.label_30.setGeometry(QtCore.QRect(7, 56, 71, 29))
+        self.label_30.setObjectName(_fromUtf8("label_30"))
+        self.prevFrames = QtGui.QSpinBox(self.tab_2)
+        self.prevFrames.setGeometry(QtCore.QRect(267, 168, 51, 27))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.prevFrames.sizePolicy().hasHeightForWidth())
+        self.prevFrames.setSizePolicy(sizePolicy)
+        self.prevFrames.setBaseSize(QtCore.QSize(100, 0))
+        self.prevFrames.setReadOnly(False)
+        self.prevFrames.setButtonSymbols(QtGui.QAbstractSpinBox.PlusMinus)
+        self.prevFrames.setMaximum(10)
+        self.prevFrames.setProperty("value", 5)
+        self.prevFrames.setObjectName(_fromUtf8("prevFrames"))
+        self.label_27 = QtGui.QLabel(self.tab_2)
+        self.label_27.setGeometry(QtCore.QRect(0, 200, 61, 29))
+        self.label_27.setObjectName(_fromUtf8("label_27"))
+        self.prevAction = QtGui.QComboBox(self.tab_2)
+        self.prevAction.setGeometry(QtCore.QRect(130, 200, 171, 27))
+        self.prevAction.setObjectName(_fromUtf8("prevAction"))
+        self.prevAction.addItem(_fromUtf8(""))
+        self.prevAction.addItem(_fromUtf8(""))
+        self.label_25 = QtGui.QLabel(self.tab_2)
+        self.label_25.setGeometry(QtCore.QRect(0, 90, 161, 29))
+        self.label_25.setObjectName(_fromUtf8("label_25"))
+        self.label_29 = QtGui.QLabel(self.tab_2)
+        self.label_29.setGeometry(QtCore.QRect(0, 120, 61, 29))
+        self.label_29.setObjectName(_fromUtf8("label_29"))
+        self.last4init = QtGui.QSpinBox(self.tab_2)
+        self.last4init.setGeometry(QtCore.QRect(157, 90, 51, 27))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.last4init.sizePolicy().hasHeightForWidth())
+        self.last4init.setSizePolicy(sizePolicy)
+        self.last4init.setBaseSize(QtCore.QSize(100, 0))
+        self.last4init.setReadOnly(False)
+        self.last4init.setButtonSymbols(QtGui.QAbstractSpinBox.PlusMinus)
+        self.last4init.setMaximum(10)
+        self.last4init.setProperty("value", 5)
+        self.last4init.setObjectName(_fromUtf8("last4init"))
+        self.initPct = QtGui.QSpinBox(self.tab_2)
+        self.initPct.setGeometry(QtCore.QRect(60, 120, 65, 27))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.initPct.sizePolicy().hasHeightForWidth())
+        self.initPct.setSizePolicy(sizePolicy)
+        self.initPct.setBaseSize(QtCore.QSize(100, 0))
+        self.initPct.setReadOnly(False)
+        self.initPct.setButtonSymbols(QtGui.QAbstractSpinBox.PlusMinus)
+        self.initPct.setMaximum(100)
+        self.initPct.setProperty("value", 100)
+        self.initPct.setObjectName(_fromUtf8("initPct"))
+        self.initFrames = QtGui.QSpinBox(self.tab_2)
+        self.initFrames.setGeometry(QtCore.QRect(264, 88, 51, 27))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.initFrames.sizePolicy().hasHeightForWidth())
+        self.initFrames.setSizePolicy(sizePolicy)
+        self.initFrames.setBaseSize(QtCore.QSize(100, 0))
+        self.initFrames.setReadOnly(False)
+        self.initFrames.setButtonSymbols(QtGui.QAbstractSpinBox.PlusMinus)
+        self.initFrames.setMaximum(10)
+        self.initFrames.setProperty("value", 5)
+        self.initFrames.setObjectName(_fromUtf8("initFrames"))
+        self.label_31 = QtGui.QLabel(self.tab_2)
+        self.label_31.setGeometry(QtCore.QRect(210, 88, 51, 29))
+        self.label_31.setObjectName(_fromUtf8("label_31"))
+        self.initAction = QtGui.QComboBox(self.tab_2)
+        self.initAction.setGeometry(QtCore.QRect(130, 120, 171, 27))
+        self.initAction.setObjectName(_fromUtf8("initAction"))
+        self.initAction.addItem(_fromUtf8(""))
+        self.initAction.addItem(_fromUtf8(""))
+        self.deltaBrt = QtGui.QSpinBox(self.tab_2)
+        self.deltaBrt.setGeometry(QtCore.QRect(162, 55, 71, 27))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.deltaBrt.sizePolicy().hasHeightForWidth())
+        self.deltaBrt.setSizePolicy(sizePolicy)
+        self.deltaBrt.setBaseSize(QtCore.QSize(100, 0))
+        self.deltaBrt.setReadOnly(False)
+        self.deltaBrt.setButtonSymbols(QtGui.QAbstractSpinBox.PlusMinus)
+        self.deltaBrt.setMaximum(10)
+        self.deltaBrt.setProperty("value", 1)
+        self.deltaBrt.setObjectName(_fromUtf8("deltaBrt"))
+        self.label_32 = QtGui.QLabel(self.tab_2)
+        self.label_32.setGeometry(QtCore.QRect(142, 56, 16, 29))
+        self.label_32.setObjectName(_fromUtf8("label_32"))
+        self.tabWidget.addTab(self.tab_2, _fromUtf8(""))
+        self.groupBox_2 = QtGui.QGroupBox(Form1)
+        self.groupBox_2.setGeometry(QtCore.QRect(0, 360, 311, 151))
+        self.groupBox_2.setObjectName(_fromUtf8("groupBox_2"))
+        self.blueGain = QtGui.QSlider(self.groupBox_2)
+        self.blueGain.setEnabled(False)
+        self.blueGain.setGeometry(QtCore.QRect(30, 30, 160, 29))
+        self.blueGain.setMinimum(50)
+        self.blueGain.setMaximum(400)
+        self.blueGain.setProperty("value", 200)
+        self.blueGain.setOrientation(QtCore.Qt.Horizontal)
+        self.blueGain.setObjectName(_fromUtf8("blueGain"))
+        self.redGain = QtGui.QSlider(self.groupBox_2)
+        self.redGain.setEnabled(False)
+        self.redGain.setGeometry(QtCore.QRect(30, 60, 160, 29))
+        self.redGain.setMinimum(50)
+        self.redGain.setMaximum(250)
+        self.redGain.setSingleStep(1)
+        self.redGain.setPageStep(10)
+        self.redGain.setProperty("value", 100)
+        self.redGain.setSliderPosition(100)
+        self.redGain.setOrientation(QtCore.Qt.Horizontal)
+        self.redGain.setObjectName(_fromUtf8("redGain"))
+        self.label_5 = QtGui.QLabel(self.groupBox_2)
+        self.label_5.setGeometry(QtCore.QRect(0, 70, 31, 10))
+        self.label_5.setObjectName(_fromUtf8("label_5"))
+        self.label_8 = QtGui.QLabel(self.groupBox_2)
+        self.label_8.setGeometry(QtCore.QRect(0, 40, 31, 10))
+        self.label_8.setObjectName(_fromUtf8("label_8"))
+        self.blueGainBox = QtGui.QSpinBox(self.groupBox_2)
+        self.blueGainBox.setEnabled(False)
+        self.blueGainBox.setGeometry(QtCore.QRect(190, 30, 60, 27))
+        self.blueGainBox.setMinimum(50)
+        self.blueGainBox.setMaximum(400)
+        self.blueGainBox.setProperty("value", 200)
+        self.blueGainBox.setObjectName(_fromUtf8("blueGainBox"))
+        self.redGainBox = QtGui.QSpinBox(self.groupBox_2)
+        self.redGainBox.setEnabled(False)
+        self.redGainBox.setGeometry(QtCore.QRect(190, 60, 60, 27))
+        self.redGainBox.setMinimum(50)
+        self.redGainBox.setMaximum(250)
+        self.redGainBox.setProperty("value", 100)
+        self.redGainBox.setObjectName(_fromUtf8("redGainBox"))
+        self.saturation = QtGui.QSlider(self.groupBox_2)
+        self.saturation.setGeometry(QtCore.QRect(57, 90, 131, 29))
+        self.saturation.setMinimum(-100)
+        self.saturation.setMaximum(100)
+        self.saturation.setProperty("value", 0)
+        self.saturation.setSliderPosition(0)
+        self.saturation.setOrientation(QtCore.Qt.Horizontal)
+        self.saturation.setObjectName(_fromUtf8("saturation"))
+        self.label_10 = QtGui.QLabel(self.groupBox_2)
+        self.label_10.setGeometry(QtCore.QRect(0, 98, 31, 10))
+        self.label_10.setObjectName(_fromUtf8("label_10"))
+        self.saturationBox = QtGui.QSpinBox(self.groupBox_2)
+        self.saturationBox.setGeometry(QtCore.QRect(190, 90, 60, 27))
+        self.saturationBox.setMinimum(-100)
+        self.saturationBox.setMaximum(100)
+        self.saturationBox.setObjectName(_fromUtf8("saturationBox"))
+        self.blueResetBtn = QtGui.QPushButton(self.groupBox_2)
+        self.blueResetBtn.setEnabled(False)
+        self.blueResetBtn.setGeometry(QtCore.QRect(250, 30, 51, 27))
+        self.blueResetBtn.setObjectName(_fromUtf8("blueResetBtn"))
+        self.redResetBtn = QtGui.QPushButton(self.groupBox_2)
+        self.redResetBtn.setEnabled(False)
+        self.redResetBtn.setGeometry(QtCore.QRect(250, 60, 51, 27))
+        self.redResetBtn.setObjectName(_fromUtf8("redResetBtn"))
+        self.resetSaturationBtn = QtGui.QPushButton(self.groupBox_2)
+        self.resetSaturationBtn.setGeometry(QtCore.QRect(250, 90, 51, 27))
+        self.resetSaturationBtn.setObjectName(_fromUtf8("resetSaturationBtn"))
+        self.colorSetBtn = QtGui.QPushButton(self.groupBox_2)
+        self.colorSetBtn.setGeometry(QtCore.QRect(230, 0, 71, 24))
+        self.colorSetBtn.setObjectName(_fromUtf8("colorSetBtn"))
+        self.awbBox = QtGui.QComboBox(self.groupBox_2)
+        self.awbBox.setGeometry(QtCore.QRect(110, 0, 121, 24))
+        self.awbBox.setObjectName(_fromUtf8("awbBox"))
+        self.awbBox.addItem(_fromUtf8(""))
+        self.awbBox.setItemText(0, _fromUtf8("off"))
+        self.awbBox.addItem(_fromUtf8(""))
+        self.awbBox.setItemText(1, _fromUtf8("auto"))
+        self.awbBox.addItem(_fromUtf8(""))
+        self.awbBox.setItemText(2, _fromUtf8("sunlight"))
+        self.awbBox.addItem(_fromUtf8(""))
+        self.awbBox.setItemText(3, _fromUtf8("cloudy"))
+        self.awbBox.addItem(_fromUtf8(""))
+        self.awbBox.addItem(_fromUtf8(""))
+        self.awbBox.addItem(_fromUtf8(""))
+        self.awbBox.addItem(_fromUtf8(""))
+        self.awbBox.addItem(_fromUtf8(""))
+        self.awbBox.addItem(_fromUtf8(""))
+        self.resetContBtn = QtGui.QPushButton(self.groupBox_2)
+        self.resetContBtn.setGeometry(QtCore.QRect(250, 120, 51, 27))
+        self.resetContBtn.setObjectName(_fromUtf8("resetContBtn"))
+        self.contrast = QtGui.QSlider(self.groupBox_2)
+        self.contrast.setGeometry(QtCore.QRect(57, 120, 131, 29))
+        self.contrast.setMinimum(-100)
+        self.contrast.setMaximum(100)
+        self.contrast.setProperty("value", 0)
+        self.contrast.setSliderPosition(0)
+        self.contrast.setOrientation(QtCore.Qt.Horizontal)
+        self.contrast.setTickPosition(QtGui.QSlider.NoTicks)
+        self.contrast.setTickInterval(10)
+        self.contrast.setObjectName(_fromUtf8("contrast"))
+        self.contrastBox = QtGui.QSpinBox(self.groupBox_2)
+        self.contrastBox.setGeometry(QtCore.QRect(190, 120, 60, 27))
+        self.contrastBox.setMinimum(-100)
+        self.contrastBox.setMaximum(100)
+        self.contrastBox.setProperty("value", 0)
+        self.contrastBox.setObjectName(_fromUtf8("contrastBox"))
+        self.label_17 = QtGui.QLabel(self.groupBox_2)
+        self.label_17.setGeometry(QtCore.QRect(-1, 130, 31, 10))
+        self.label_17.setObjectName(_fromUtf8("label_17"))
+        self.verticalLayoutWidget = QtGui.QWidget(Form1)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 580, 321, 231))
+        self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
+        self.histogram = QtGui.QVBoxLayout(self.verticalLayoutWidget)
+        self.histogram.setObjectName(_fromUtf8("histogram"))
+        self.groupBox_3 = QtGui.QGroupBox(Form1)
+        self.groupBox_3.setGeometry(QtCore.QRect(0, 265, 321, 81))
+        self.groupBox_3.setObjectName(_fromUtf8("groupBox_3"))
+        self.label_15 = QtGui.QLabel(self.groupBox_3)
+        self.label_15.setGeometry(QtCore.QRect(0, 30, 31, 10))
+        self.label_15.setObjectName(_fromUtf8("label_15"))
+        self.brightness = QtGui.QSlider(self.groupBox_3)
+        self.brightness.setGeometry(QtCore.QRect(20, 20, 160, 29))
+        self.brightness.setMinimum(0)
+        self.brightness.setMaximum(100)
+        self.brightness.setProperty("value", 50)
+        self.brightness.setSliderPosition(50)
+        self.brightness.setOrientation(QtCore.Qt.Horizontal)
+        self.brightness.setTickPosition(QtGui.QSlider.TicksBelow)
+        self.brightness.setTickInterval(10)
+        self.brightness.setObjectName(_fromUtf8("brightness"))
+        self.brightnessBox = QtGui.QSpinBox(self.groupBox_3)
+        self.brightnessBox.setGeometry(QtCore.QRect(190, 20, 60, 27))
+        self.brightnessBox.setMaximum(100)
+        self.brightnessBox.setProperty("value", 50)
+        self.brightnessBox.setObjectName(_fromUtf8("brightnessBox"))
+        self.resetBrightBtn = QtGui.QPushButton(self.groupBox_3)
+        self.resetBrightBtn.setGeometry(QtCore.QRect(250, 20, 51, 27))
+        self.resetBrightBtn.setObjectName(_fromUtf8("resetBrightBtn"))
+        self.EV = QtGui.QSpinBox(self.groupBox_3)
+        self.EV.setGeometry(QtCore.QRect(170, 55, 60, 27))
+        self.EV.setMinimum(-25)
+        self.EV.setMaximum(25)
+        self.EV.setProperty("value", 0)
+        self.EV.setObjectName(_fromUtf8("EV"))
+        self.label_22 = QtGui.QLabel(self.groupBox_3)
+        self.label_22.setGeometry(QtCore.QRect(0, 60, 171, 16))
+        self.label_22.setObjectName(_fromUtf8("label_22"))
+        self.frame = QtGui.QFrame(Form1)
+        self.frame.setGeometry(QtCore.QRect(0, 510, 323, 63))
+        self.frame.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame.setObjectName(_fromUtf8("frame"))
+        self.pctOverB = QtGui.QLabel(self.frame)
+        self.pctOverB.setGeometry(QtCore.QRect(180, 3, 41, 17))
+        self.pctOverB.setStyleSheet(_fromUtf8("background-color: white; color: blue"))
+        self.pctOverB.setFrameShape(QtGui.QFrame.Box)
+        self.pctOverB.setText(_fromUtf8(""))
+        self.pctOverB.setTextFormat(QtCore.Qt.PlainText)
+        self.pctOverB.setObjectName(_fromUtf8("pctOverB"))
+        self.pctOverR = QtGui.QLabel(self.frame)
+        self.pctOverR.setGeometry(QtCore.QRect(64, 3, 41, 17))
+        self.pctOverR.setStyleSheet(_fromUtf8("background-color: white; color: red"))
+        self.pctOverR.setFrameShape(QtGui.QFrame.Box)
+        self.pctOverR.setText(_fromUtf8(""))
+        self.pctOverR.setTextFormat(QtCore.Qt.PlainText)
+        self.pctOverR.setObjectName(_fromUtf8("pctOverR"))
+        self.pctOverG = QtGui.QLabel(self.frame)
+        self.pctOverG.setGeometry(QtCore.QRect(120, 3, 41, 17))
+        self.pctOverG.setStyleSheet(_fromUtf8("background-color: white; color: green"))
+        self.pctOverG.setFrameShape(QtGui.QFrame.Box)
+        self.pctOverG.setText(_fromUtf8(""))
+        self.pctOverG.setTextFormat(QtCore.Qt.PlainText)
+        self.pctOverG.setObjectName(_fromUtf8("pctOverG"))
+        self.label_14 = QtGui.QLabel(self.frame)
+        self.label_14.setGeometry(QtCore.QRect(4, 20, 50, 17))
+        self.label_14.setObjectName(_fromUtf8("label_14"))
+        self.label_9 = QtGui.QLabel(self.frame)
+        self.label_9.setGeometry(QtCore.QRect(250, 0, 31, 17))
+        self.label_9.setObjectName(_fromUtf8("label_9"))
+        self.pctUnder = QtGui.QLabel(self.frame)
+        self.pctUnder.setGeometry(QtCore.QRect(280, 0, 41, 17))
+        self.pctUnder.setStyleSheet(_fromUtf8("background-color: white"))
+        self.pctUnder.setFrameShape(QtGui.QFrame.Box)
+        self.pctUnder.setText(_fromUtf8(""))
+        self.pctUnder.setTextFormat(QtCore.Qt.PlainText)
+        self.pctUnder.setObjectName(_fromUtf8("pctUnder"))
+        self.pctAvg = QtGui.QLabel(self.frame)
+        self.pctAvg.setGeometry(QtCore.QRect(280, 20, 41, 17))
+        self.pctAvg.setStyleSheet(_fromUtf8("background-color: white"))
+        self.pctAvg.setFrameShape(QtGui.QFrame.Box)
+        self.pctAvg.setText(_fromUtf8(""))
+        self.pctAvg.setTextFormat(QtCore.Qt.PlainText)
+        self.pctAvg.setObjectName(_fromUtf8("pctAvg"))
+        self.label_19 = QtGui.QLabel(self.frame)
+        self.label_19.setGeometry(QtCore.QRect(250, 17, 31, 21))
+        self.label_19.setObjectName(_fromUtf8("label_19"))
+        self.levelLowR = QtGui.QSpinBox(self.frame)
+        self.levelLowR.setGeometry(QtCore.QRect(60, 20, 51, 21))
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipText, brush)
+        self.levelLowR.setPalette(palette)
+        self.levelLowR.setMaximum(127)
+        self.levelLowR.setObjectName(_fromUtf8("levelLowR"))
+        self.label_35 = QtGui.QLabel(self.frame)
+        self.label_35.setGeometry(QtCore.QRect(0, 2, 31, 17))
+        self.label_35.setObjectName(_fromUtf8("label_35"))
+        self.label_36 = QtGui.QLabel(self.frame)
+        self.label_36.setGeometry(QtCore.QRect(4, 40, 50, 17))
+        self.label_36.setObjectName(_fromUtf8("label_36"))
+        self.levelHiR = QtGui.QSpinBox(self.frame)
+        self.levelHiR.setGeometry(QtCore.QRect(60, 40, 51, 21))
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipText, brush)
+        self.levelHiR.setPalette(palette)
+        self.levelHiR.setMinimum(128)
+        self.levelHiR.setMaximum(255)
+        self.levelHiR.setProperty("value", 255)
+        self.levelHiR.setObjectName(_fromUtf8("levelHiR"))
+        self.levelHiG = QtGui.QSpinBox(self.frame)
+        self.levelHiG.setGeometry(QtCore.QRect(120, 40, 51, 21))
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipText, brush)
+        self.levelHiG.setPalette(palette)
+        self.levelHiG.setMinimum(128)
+        self.levelHiG.setMaximum(255)
+        self.levelHiG.setProperty("value", 255)
+        self.levelHiG.setObjectName(_fromUtf8("levelHiG"))
+        self.levelLowG = QtGui.QSpinBox(self.frame)
+        self.levelLowG.setGeometry(QtCore.QRect(120, 20, 51, 21))
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipText, brush)
+        self.levelLowG.setPalette(palette)
+        self.levelLowG.setMaximum(127)
+        self.levelLowG.setObjectName(_fromUtf8("levelLowG"))
+        self.levelHiB = QtGui.QSpinBox(self.frame)
+        self.levelHiB.setGeometry(QtCore.QRect(180, 40, 51, 21))
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipText, brush)
+        self.levelHiB.setPalette(palette)
+        self.levelHiB.setMinimum(128)
+        self.levelHiB.setMaximum(255)
+        self.levelHiB.setProperty("value", 255)
+        self.levelHiB.setObjectName(_fromUtf8("levelHiB"))
+        self.levelLowB = QtGui.QSpinBox(self.frame)
+        self.levelLowB.setGeometry(QtCore.QRect(180, 20, 51, 21))
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Light, brush)
+        brush = QtGui.QBrush(QtGui.QColor(212, 212, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Midlight, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Dark, brush)
+        brush = QtGui.QBrush(QtGui.QColor(113, 113, 170))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Mid, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.BrightText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(85, 85, 127))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Shadow, brush)
+        brush = QtGui.QBrush(QtGui.QColor(170, 170, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.AlternateBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 220))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipBase, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipText, brush)
+        self.levelLowB.setPalette(palette)
+        self.levelLowB.setMaximum(127)
+        self.levelLowB.setObjectName(_fromUtf8("levelLowB"))
+        self.checkBox = QtGui.QCheckBox(self.frame)
+        self.checkBox.setGeometry(QtCore.QRect(230, 40, 99, 22))
+        self.checkBox.setObjectName(_fromUtf8("checkBox"))
+        self.statusBar = QtGui.QLabel(Form1)
+        self.statusBar.setGeometry(QtCore.QRect(0, 810, 321, 17))
+        self.statusBar.setObjectName(_fromUtf8("statusBar"))
+
+        self.retranslateUi(Form1)
+        self.tabWidget.setCurrentIndex(0)
+        self.awbBox.setCurrentIndex(1)
+        QtCore.QObject.connect(self.blueGain, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setGainBlue)
+        QtCore.QObject.connect(self.redGain, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setGainRed)
+        QtCore.QObject.connect(self.redGain, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.redGainBox.setValue)
+        QtCore.QObject.connect(self.blueGain, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.blueGainBox.setValue)
+        QtCore.QObject.connect(self.redGainBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.redGain.setValue)
+        QtCore.QObject.connect(self.blueGainBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.blueGain.setValue)
+        QtCore.QObject.connect(self.blueGainBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setGainBlue)
+        QtCore.QObject.connect(self.redGainBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setGainRed)
+        QtCore.QObject.connect(self.brightness, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.brightnessBox.setValue)
+        QtCore.QObject.connect(self.brightnessBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.brightness.setValue)
+        QtCore.QObject.connect(self.brightnessBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setBright)
+        QtCore.QObject.connect(self.saturationBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setSaturation)
+        QtCore.QObject.connect(self.saturationBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.saturation.setValue)
+        QtCore.QObject.connect(self.saturation, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.saturationBox.setValue)
+        QtCore.QObject.connect(self.resetBrightBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.resetBright)
+        QtCore.QObject.connect(self.resetContBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.resetContrast)
+        QtCore.QObject.connect(self.blueResetBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.resetGainBlue)
+        QtCore.QObject.connect(self.redResetBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.resetGainRed)
+        QtCore.QObject.connect(self.resetSaturationBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.resetSaturation)
+        QtCore.QObject.connect(self.contrast, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.contrastBox.setValue)
+        QtCore.QObject.connect(self.contrastBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.contrast.setValue)
+        QtCore.QObject.connect(self.contrastBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setContrast)
+        QtCore.QObject.connect(self.colorSetBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.colorSet)
+        QtCore.QObject.connect(self.awbBox, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(QString)")), Form1.setAWBmode)
+        QtCore.QObject.connect(self.EV, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setEV)
+        QtCore.QObject.connect(self.vflip, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), Form1.setVFlip)
+        QtCore.QObject.connect(self.captureStartBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.captureStart)
+        QtCore.QObject.connect(self.stopButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.motorStop)
+        QtCore.QObject.connect(self.hflip, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), Form1.setHFlip)
+        QtCore.QObject.connect(self.tabWidget, QtCore.SIGNAL(_fromUtf8("currentChanged(int)")), Form1.tabChanged)
+        QtCore.QObject.connect(self.sharpnessBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setSharpness)
+        QtCore.QObject.connect(self.reverseButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.motorRev)
+        QtCore.QObject.connect(self.forwardButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.motorFwd)
+        QtCore.QObject.connect(self.lightCheckbox, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), Form1.lightSet)
+        QtCore.QObject.connect(self.captureStopBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.captureEnd)
+        QtCore.QObject.connect(self.chooseFolderBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.chooseFolder)
+        QtCore.QObject.connect(self.endFrameBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setEndFrame)
+        QtCore.QObject.connect(self.bw, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.blueGain.setDisabled)
+        QtCore.QObject.connect(self.startFrameBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setStartFrame)
+        QtCore.QObject.connect(self.stopsBox, QtCore.SIGNAL(_fromUtf8("valueChanged(double)")), Form1.setBlendStops)
+        QtCore.QObject.connect(self.bw, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.redGain.setDisabled)
+        QtCore.QObject.connect(self.drcBox, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(QString)")), Form1.setDrc)
+        QtCore.QObject.connect(self.prevCheckBox, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), Form1.previewSet)
+        QtCore.QObject.connect(self.loadConfigButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.loadConfig)
+        QtCore.QObject.connect(self.bw, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), Form1.setBW)
+        QtCore.QObject.connect(self.captureTestBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.takeTestPhoto)
+        QtCore.QObject.connect(self.exposureUpBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.setExposureUp)
+        QtCore.QObject.connect(self.setExposureBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.setExposure)
+        QtCore.QObject.connect(self.saveConfigButton_2, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.saveConfig)
+        QtCore.QObject.connect(self.saveConfigButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.saveCurrentConfig)
+        QtCore.QObject.connect(self.yScroll, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setY)
+        QtCore.QObject.connect(self.xScroll, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setX)
+        QtCore.QObject.connect(self.exposureDownBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.setExposureDown)
+        QtCore.QObject.connect(self.bracketing, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setBlend)
+        QtCore.QObject.connect(self.stillCap, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), Form1.setStillPort)
+        QtCore.QObject.connect(self.zoomDial, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setZoom)
+        QtCore.QObject.connect(Form1, QtCore.SIGNAL(_fromUtf8("frameCaptured(int)")), self.frameLcd.display)
+        QtCore.QObject.connect(self.fRevButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.motorfrev)
+        QtCore.QObject.connect(self.ffdButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.motorffd)
+        QtCore.QObject.connect(self.captureFrmAdv, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.capFrameAdv)
+        QtCore.QObject.connect(self.captureFrmRev, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.capFrameRev)
+        QtCore.QObject.connect(self.captureFrmRev_2, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.capFrameRev10)
+        QtCore.QObject.connect(self.captureFrmAdv_2, QtCore.SIGNAL(_fromUtf8("clicked()")), Form1.capFrameAdv10)
+        QtCore.QObject.connect(self.autoExpCheckBox, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), Form1.setAutoExp)
+        QtCore.QObject.connect(self.pauseBox, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), Form1.capturePause)
+        QtCore.QObject.connect(self.resolution, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(int)")), Form1.setCapRes)
+        QtCore.QObject.connect(self.levelLowR, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setAdjLowR)
+        QtCore.QObject.connect(self.levelHiR, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setAdjHiR)
+        QtCore.QObject.connect(self.levelLowG, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setAdjLowG)
+        QtCore.QObject.connect(self.levelHiG, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setAdjHiG)
+        QtCore.QObject.connect(self.levelLowB, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setAdjLowB)
+        QtCore.QObject.connect(self.levelHiB, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), Form1.setAdjHiB)
+        QtCore.QMetaObject.connectSlotsByName(Form1)
+
+    def retranslateUi(self, Form1):
+        Form1.setWindowTitle(_translate("Form1", "Pi Film Capture", None))
+        self.PictureControls.setToolTip(_translate("Form1", "<html><head/><body><p>If checked, camera will automatically adjust exposure. Should normally be on, but is turned OFF when switching back from capture mode, so camera can be adjusted without affecting capture shutter speed or exposure gains.</p></body></html>", None))
+        self.lightCheckbox.setText(_translate("Form1", "Light", None))
+        self.prevCheckBox.setText(_translate("Form1", "Preview", None))
+        self.label_6.setText(_translate("Form1", "0.4        1.0", None))
+        self.reverseButton.setText(_translate("Form1", "<-", None))
+        self.stopButton.setText(_translate("Form1", "Stop", None))
+        self.forwardButton.setText(_translate("Form1", "->", None))
+        self.ffdButton.setText(_translate("Form1", ">>", None))
+        self.fRevButton.setText(_translate("Form1", "<<", None))
+        self.autoExpCheckBox.setToolTip(_translate("Form1", "Automatically adjusts exposure.  On by default, but turned off when switching back from capture, so frame can be adjusted without affecting shutter speed or gains.", None))
+        self.autoExpCheckBox.setText(_translate("Form1", "Auto Exp", None))
+        self.loadConfigButton.setText(_translate("Form1", "Load...", None))
+        self.saveConfigButton.setText(_translate("Form1", "Save", None))
+        self.saveConfigButton_2.setText(_translate("Form1", "Save As...", None))
+        self.label_18.setText(_translate("Form1", "Config File", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_setup), _translate("Form1", "Setup", None))
+        self.captureStartBtn.setText(_translate("Form1", "Start", None))
+        self.captureStopBtn.setToolTip(_translate("Form1", "Stop Capturing", None))
+        self.captureStopBtn.setText(_translate("Form1", "Stop", None))
+        self.label_2.setText(_translate("Form1", "Start on", None))
+        self.chooseFolderBtn.setText(_translate("Form1", "Folder", None))
+        self.capFolder.setPlaceholderText(_translate("Form1", "Choose Capture Folder", None))
+        self.label_3.setText(_translate("Form1", "Frames", None))
+        self.captureTestBtn.setText(_translate("Form1", "Test ", None))
+        self.setExposureBtn.setText(_translate("Form1", "Auto-set/Test Exposure", None))
+        self.exposureBox.setToolTip(_translate("Form1", "Minimum shutter speed asked for by the camera", None))
+        self.exposureUpBtn.setText(_translate("Form1", "+1/3", None))
+        self.exposureDownBtn.setText(_translate("Form1", "-1/3", None))
+        self.label_20.setText(_translate("Form1", "Shots/Frame", None))
+        self.label_21.setText(_translate("Form1", "Stops", None))
+        self.captureFrmRev.setToolTip(_translate("Form1", "Rewind One Frame", None))
+        self.captureFrmRev.setText(_translate("Form1", "<- 1", None))
+        self.captureFrmAdv.setToolTip(_translate("Form1", "Advance One Frame", None))
+        self.captureFrmAdv.setText(_translate("Form1", "1 ->", None))
+        self.label_11.setText(_translate("Form1", "Shutter (max66k)", None))
+        self.exposureBoxMin.setToolTip(_translate("Form1", "<html><head/><body><p>The \'average\' exposure speed as reported by the camera.  Bracketed exposures will be calculated by adjusting this value. Can be manually adjusted using \'+/-\' buttons above. </p></body></html>", None))
+        self.exposureBoxMax.setToolTip(_translate("Form1", "<html><head/><body><p>Maximum shutter speed needed by camera in microseconds, based on camera\'s current \'mid\' shutter speed and bracketing settings.  IMPORTANT! This is a target only: if the camera\'s framerate cannot support it, the it will not be achieved!  If it\'s too high, try using auto-set to calculate new exposure values, possibly adjusting the gains.</p></body></html>", None))
+        self.label_13.setText(_translate("Form1", "Gains", None))
+        self.gainBoxA.setToolTip(_translate("Form1", "Analog Gain reported by camera. Range from 1 to 8.  For low noise should be as near 1 as possible", None))
+        self.gainBoxD.setToolTip(_translate("Form1", "Digital gain reported by camera, from 1-8.  If not near 1, light is too low", None))
+        self.label_24.setText(_translate("Form1", "Min", None))
+        self.label_33.setText(_translate("Form1", "Mid", None))
+        self.label_34.setText(_translate("Form1", "Max", None))
+        self.captureFrmRev_2.setToolTip(_translate("Form1", "Rewind One Frame", None))
+        self.captureFrmRev_2.setText(_translate("Form1", "<-10", None))
+        self.captureFrmAdv_2.setToolTip(_translate("Form1", "Advance One Frame", None))
+        self.captureFrmAdv_2.setText(_translate("Form1", "10->", None))
+        self.pauseBox.setText(_translate("Form1", "Pause", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cap), _translate("Form1", "Capture", None))
+        self.vflip.setText(_translate("Form1", "vflip", None))
+        self.hflip.setText(_translate("Form1", "hflip", None))
+        self.bw.setText(_translate("Form1", "b/w", None))
+        self.label_4.setText(_translate("Form1", "DRC", None))
+        self.label_16.setText(_translate("Form1", "Sharpness", None))
+        self.stillCap.setToolTip(_translate("Form1", "When", None))
+        self.stillCap.setText(_translate("Form1", "Capture from Stills Port", None))
+        self.saveinits.setText(_translate("Form1", " Save Current Settings as Startup", None))
+        self.label.setText(_translate("Form1", "Capture Resolution:", None))
+        self.resolution.setItemText(0, _translate("Form1", "2592x1944", None))
+        self.resolution.setItemText(1, _translate("Form1", "1600x1200", None))
+        self.resolution.setItemText(2, _translate("Form1", "1440x1080", None))
+        self.resolution.setItemText(3, _translate("Form1", "1296x972", None))
+        self.resolution.setItemText(4, _translate("Form1", "1024x768", None))
+        self.resolution.setItemText(5, _translate("Form1", "800x600", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Form1", "Advanced", None))
+        self.blankFrameLimit.setToolTip(_translate("Form1", "<html><head/><body><p>Automatically end capture when enough &quot;white&quot; (sufficiently bright) frames are captured in a row.  Experimental, and may not work properly when automatically adjusting shutter speed.</p></body></html>", None))
+        self.prevPct.setToolTip(_translate("Form1", "<html><head/><body><p>If the frame\'s average brightness differs from the previous frame by more than a set amount, pause the capture to allow manual brightness adjustment.</p></body></html>", None))
+        self.prevPct.setSuffix(_translate("Form1", "%", None))
+        self.label_23.setText(_translate("Form1", "When diff between last", None))
+        self.label_7.setText(_translate("Form1", "blanks (0=disable) ", None))
+        self.label_12.setText(_translate("Form1", "Auto-stop on", None))
+        self.last4prev.setToolTip(_translate("Form1", "<html><head/><body><p>When detecting changes in brightness, compare groups of X frames instead of single frames.</p></body></html>", None))
+        self.label_26.setText(_translate("Form1", "& PREV", None))
+        self.label_28.setText(_translate("Form1", "per frame", None))
+        self.deltaSS.setToolTip(_translate("Form1", "<html><head/><body><p>If the frame\'s average brightness differs from the previous frame by more than a set amount, pause the capture to allow manual brightness adjustment.</p></body></html>", None))
+        self.deltaSS.setSuffix(_translate("Form1", "%", None))
+        self.label_30.setText(_translate("Form1", "Adjust by", None))
+        self.prevFrames.setToolTip(_translate("Form1", "<html><head/><body><p>When detecting changes in brightness, compare groups of X frames instead of single frames.</p></body></html>", None))
+        self.label_27.setText(_translate("Form1", "exceeds", None))
+        self.prevAction.setItemText(0, _translate("Form1", "Pause", None))
+        self.prevAction.setItemText(1, _translate("Form1", "Adjust shutter", None))
+        self.label_25.setText(_translate("Form1", "When diff between last", None))
+        self.label_29.setText(_translate("Form1", "exceeds", None))
+        self.last4init.setToolTip(_translate("Form1", "<html><head/><body><p>When detecting changes in brightness, compare groups of X frames instead of single frames.</p></body></html>", None))
+        self.initPct.setToolTip(_translate("Form1", "<html><head/><body><p>If the frame\'s average brightness differs from the previous frame by more than a set amount, pause the capture to allow manual brightness adjustment.</p></body></html>", None))
+        self.initPct.setSuffix(_translate("Form1", "%", None))
+        self.initFrames.setToolTip(_translate("Form1", "<html><head/><body><p>When detecting changes in brightness, compare groups of X frames instead of single frames.</p></body></html>", None))
+        self.label_31.setText(_translate("Form1", "& FIRST", None))
+        self.initAction.setItemText(0, _translate("Form1", "Pause", None))
+        self.initAction.setItemText(1, _translate("Form1", "Adjust shutter", None))
+        self.deltaBrt.setToolTip(_translate("Form1", "<html><head/><body><p>If the frame\'s average brightness differs from the previous frame by more than a set amount, pause the capture to allow manual brightness adjustment.</p></body></html>", None))
+        self.deltaBrt.setSuffix(_translate("Form1", " brt", None))
+        self.label_32.setText(_translate("Form1", "or", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Form1", "Smart Cap", None))
+        self.groupBox_2.setTitle(_translate("Form1", "Color", None))
+        self.label_5.setText(_translate("Form1", "Red", None))
+        self.label_8.setText(_translate("Form1", "Blue", None))
+        self.label_10.setText(_translate("Form1", "Sat", None))
+        self.blueResetBtn.setText(_translate("Form1", "Reset", None))
+        self.redResetBtn.setText(_translate("Form1", "Reset", None))
+        self.resetSaturationBtn.setText(_translate("Form1", "Reset", None))
+        self.colorSetBtn.setToolTip(_translate("Form1", "<html><head/><body><p>When clicked, Blue and Red color gains will be set to those used by the current WB setting, and auto-white balance will be turned off so that the values may be manually adjusted.</p></body></html>", None))
+        self.colorSetBtn.setText(_translate("Form1", "Use this", None))
+        self.awbBox.setItemText(4, _translate("Form1", "shade", None))
+        self.awbBox.setItemText(5, _translate("Form1", "tungsten", None))
+        self.awbBox.setItemText(6, _translate("Form1", "fluorescent", None))
+        self.awbBox.setItemText(7, _translate("Form1", "incandescent", None))
+        self.awbBox.setItemText(8, _translate("Form1", "flash", None))
+        self.awbBox.setItemText(9, _translate("Form1", "horizon", None))
+        self.resetContBtn.setText(_translate("Form1", "Reset", None))
+        self.label_17.setText(_translate("Form1", "Cont", None))
+        self.groupBox_3.setTitle(_translate("Form1", "Cam Settings", None))
+        self.label_15.setText(_translate("Form1", "Brt", None))
+        self.resetBrightBtn.setText(_translate("Form1", "Reset", None))
+        self.EV.setToolTip(_translate("Form1", "<html><head/><body><p>Changes the effective exposure by 1/6 stop.  This affects previews and the initial setting for capture (plus any smart adjustments).  Changing it during capture will have NO EFFECT unless capture is paused and &quot;Set Exposure&quot; is pressed.</p></body></html>", None))
+        self.label_22.setText(_translate("Form1", "Exposure Compensation", None))
+        self.label_14.setText(_translate("Form1", "Adj Lo:", None))
+        self.label_9.setText(_translate("Form1", "%Lo:", None))
+        self.label_19.setText(_translate("Form1", "Avg:", None))
+        self.label_35.setText(_translate("Form1", "%Hi:", None))
+        self.label_36.setText(_translate("Form1", "Adj Hi:", None))
+        self.checkBox.setText(_translate("Form1", "SBS Orig", None))
+        self.statusBar.setText(_translate("Form1", "Program Started", None))
+
