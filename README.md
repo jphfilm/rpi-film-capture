@@ -6,7 +6,7 @@ A project to perform frame-by-frame capture of 8mm and 16mm films using a raspbe
 
 Design:
 * Film transport is via a repurposed projector (8mm, Super8, or 16mm), driven by a stepper motor. 
-* Raspberry Pi acts as a headless server, controlling the camera, streaming captured images over a network, and controlling the camera.
+* Raspberry Pi acts as a headless server, controlling the camera, driving the motor, and streaming captured images over a network to a more powerful client.
 * Python 'client' program runs on a higher-power computer on the same network. It sends control commands to the Pi server, and performs processing on images as they are captured.
 
 Optimizations for Speed:
