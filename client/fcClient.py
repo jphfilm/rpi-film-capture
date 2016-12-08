@@ -42,6 +42,8 @@ if __name__ == "__main__":
 		logging.debug("Imgthread started")
 		#win.loadConfigFile(config.initfile) #load initial config
 		sleep(2)
+		#setup capture mode and take first pic
+		win.getFirstImg()
 	rtnVal=app.exec_()
 	logging.debug("Window Closed")
 	config.exitFlag=True

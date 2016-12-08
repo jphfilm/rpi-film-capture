@@ -61,7 +61,6 @@ class imgThread (qtcore.QThread):#(threading.Thread):
 		self.conn = connection
 		cv2.namedWindow(config.imgWinTitle, cv2.WINDOW_NORMAL)
 		cv2.resizeWindow(config.imgWinTitle, config.imgWinWidth, config.imgWinHeight)
-		cv2.resizeWindow(config.imgWinTitle, config.imgWinWidth, config.imgWinHeight)
 		cv2.moveWindow(config.imgWinTitle, config.imgWinX, config.imgWinY)
 
 	def updateFrameNum(self,i):

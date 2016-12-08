@@ -40,6 +40,7 @@ class fcDialog(QDialog, Ui_Form1):
 		self.move(0,0)
 		self.Levels=[[0,255],[0,255],[0,255]]
 
+
 	def setupThreadingUpdates(self, imgthread):
 		#set up connections to UI update from imgthread
 		self.connect(imgthread, QtCore.SIGNAL("updateFrameNum(int)"), self.updateFrameNum)
@@ -49,21 +50,30 @@ class fcDialog(QDialog, Ui_Form1):
 		self.connect(imgthread, QtCore.SIGNAL("updateGains(int, int)"), self.updateGains)
 		self.connect(imgthread, QtCore.SIGNAL("updateStatus(QString)"), self.updateStatus)
 
+
+
+	def getFirstImg(self):
+		sendCtrl(CAPTURE_ON) #to start capture mode
+		config.captureOn = True
+		config.wait_for_test=True
+
 #TAB CHANGE CONROLS
+
+#Changing 12/5/16 to not have tabs set mode
 	def tabChanged(self,tab):
-		if tab == 0:
-			if config.captureOn:
-				config.captureOn = False
-			sendCtrl(CAPTURE_OFF) #to stop capture mode
-			if self.prevCheckBox.isChecked():
-				sendCtrl(PREVIEW_ON)
-		elif tab == 1:
+#		if tab == 0:
+#			if config.captureOn:
+#				config.captureOn = False
+#			sendCtrl(CAPTURE_OFF) #to stop capture mode
+#			if self.prevCheckBox.isChecked():
+#				sendCtrl(PREVIEW_ON)
+		if tab == 1:
 			if not config.captureOn:
 				self.autoExpCheckBox.setChecked(False)
-				sendCtrl(CAPTURE_ON) #to start capture mode
-				#sendCtrl(SPEED+str(self.driveSpeed.value()))
-				config.captureOn = True
-				config.wait_for_test=True  #switching to capture mode sets the exposure and sends a test pic
+#				sendCtrl(CAPTURE_ON) #to start capture mode
+#				#sendCtrl(SPEED+str(self.driveSpeed.value()))
+#				config.captureOn = True
+#				config.wait_for_test=True  #switching to capture mode sets the exposure and sends a test pic
 		#if tab = 2 (advanced) we leave things at current setting
 #SETUP CONTROLS	
 	def motorFwd(self):
@@ -81,9 +91,20 @@ class fcDialog(QDialog, Ui_Form1):
 	def lightSet(self, isOn):
 		sendCtrl(LIGHT_ON if isOn else LIGHT_OFF)
 	def previewSet(self, isOn):
+#		config.prevOn=isOn
 		if isOn:
+			sendCtrl(CAPTURE_OFF)
+			config.captureOn = False
+			sendCtrl(PREVIEW_ON)
 			config.prevOn=isOn
-		sendCtrl(PREVIEW_ON if isOn else PREVIEW_OFF)
+			self.tabWidget.setTabEnabled(1,False)
+		else:
+			sendCtrl(PREVIEW_OFF)
+			sendCtrl(CAPTURE_ON)
+			config.captureOn = True
+			config.wait_for_test=True
+			self.tabWidget.setTabEnabled(1,True)
+#		sendCtrl(PREVIEW_ON if isOn else PREVIEW_OFF)
 			#this tells the client to stop sending previews.  Client will send a "t" character
 			#to our image thread, which will then set prevOn to False and stop reading from the stream.
 	def setAutoExp(self, isOn):
@@ -133,6 +154,12 @@ class fcDialog(QDialog, Ui_Form1):
 		logging.debug("Done reading config file")
 # CAPTURE CONTROLS
 	def captureStart(self):
+		#disable preview,
+		self.prevCheckBox.setEnabled(False)
+		self.captureStopBtn.setEnabled(True)
+		self.captureStartBtn.setEnabled(False)
+		self.pauseBox.setEnabled(True)
+		
 		#initialize arrays for smartCapture
 		config.frame_number=config.frame_start
 		#For Smart Capture Brightness Tracking - Unused Now:  config.brightnessInit(self.prevFrames.value(),self.last4prev.value(),self.initFrames.value(),self.last4init.value())
@@ -141,6 +168,10 @@ class fcDialog(QDialog, Ui_Form1):
 		self.setExposureBtn.setDisabled(True)
 		config.wait_for_test=False  #might not be necessary, but if we didn't get an extra frame when stopping it won't set back
 	def captureEnd(self):
+		self.captureStartBtn.setEnabled(True)
+		self.pauseBox.setEnabled(False)
+		self.prevCheckBox.setEnabled(True)
+	
 		sendCtrl(STOP_CAPTURE)
 		#if not self.lightCheckbox.isChecked():
 		#	sendCtrl(LIGHT_OFF) 
@@ -149,14 +180,17 @@ class fcDialog(QDialog, Ui_Form1):
 		self.startFrameBox.setValue(config.frame_number)
 	def capturePause(self, paused):
 		if paused:
+			#self.captureStopBtn.setEnabled(True)
+			#self.captureStartBtn.setEnabled(True)
+
 			sendCtrl(STOP_CAPTURE)
-			self.pauseBox.setEnabled(False)
 			sleep(5)  #We switch to test mode, but only after finishing streaming whatever's coming
 			self.setExposureBtn.setEnabled(True)
-			self.pauseBox.setEnabled(True)
+			self.captureStopBtn.setEnabled(False)
 			config.wait_for_test=True  #this assumes that we might get an extra frame after sending quit signal
 		else:
 			config.wait_for_test=False
+			self.captureStopBtn.setEnabled(True)
 			sendCtrl(RESUME_CAPTURE)
 	def capFrameAdv(self):
 		sendCtrl(CAP_FRAME_ADV)
