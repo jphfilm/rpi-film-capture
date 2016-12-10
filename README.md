@@ -28,7 +28,7 @@ Optimizations for Usability:
 * Near-real-time view of captured images.
 * Save/load settings, e.g. for different film types or projector setups.
 * 'Smart capture' features to adjust to dramatic lighting changes (under development)
-* Entire system can be moved between projectors to another to change film gauges.
+* Entire system can be moved from one projector to another to change film gauges.
 
 See the [wiki](https://github.com/jphfilm/rpi-film-capture/wiki)(still under construction) for complete documentation, including a manual, wiring diagrams, and hardware selection tips for your own project.
 
