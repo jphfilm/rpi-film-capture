@@ -4,6 +4,8 @@
 A project to perform frame-by-frame capture of 8mm and 16mm films using a raspberry pi, the pi camera, and a modified movie projector. 
 <img src="images/super8setup.jpg" width="480">
 
+**Update: If you're implementing this and want suggestions/advice from other users, consider joining the [google group](https://groups.google.com/forum/#!forum/rpi-film-capture)
+
 Design:
 * Film transport is via a repurposed projector (8mm, Super8, or 16mm), driven by a stepper motor. 
 * Raspberry Pi acts as a headless server, controlling the camera, driving the motor, and streaming captured images over a network to a more powerful client.
@@ -28,9 +30,10 @@ Optimizations for Usability:
 * Near-real-time view of captured images.
 * Save/load settings, e.g. for different film types or projector setups.
 * 'Smart capture' features to adjust to dramatic lighting changes (under development)
-* Entire system can be moved between projectors to another to change film gauges.
+* Entire system can be moved from one projector to another to change film gauges.
 
 See the [wiki](https://github.com/jphfilm/rpi-film-capture/wiki)(still under construction) for complete documentation, including a manual, wiring diagrams, and hardware selection tips for your own project.
 
 Demonstration video, samples, and comparison w/ direct capture at speed available on my [YouTube channel](https://www.youtube.com/channel/UCQi6WqZvf4OT9eOhWeVfKMg).
+Many more capture examples on my [Vimeo channel](https://vimeo.com/jphfilm)
 
