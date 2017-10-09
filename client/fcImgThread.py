@@ -1,5 +1,5 @@
 import cv2			#needed for histogram plotting and preview window display
-					#need to build and install opencv version 3 to support frame blending
+				#need to build and install opencv version 3 to support frame blending
 import threading
 import struct
 import logging
@@ -9,6 +9,7 @@ import io
 from time import sleep
 from fractions import Fraction
 from PyQt4 import QtCore as qtcore
+from PyQt4 import QtGui
 
 mask_pct = .8			#this determines what (center) portion of the image is used for histogram calculations. (Avoid using black borders)
 blender=cv2.createMergeMertens()   #COMMENT OUT IF NOT USING opencv version 3+ and bracketing
@@ -36,7 +37,6 @@ def adjustable_img(img):
 def saveable_255_img(img):
 	return np.array(img,dtype=float)
 
-
 def quickBrightness(img):
 	#make a thumbnail, convert to grayscale, get avg value
 	brt=cv2.mean(cv2.cvtColor(cv2.resize(img, (120,90)),cv2.COLOR_BGR2GRAY))
@@ -44,24 +44,47 @@ def quickBrightness(img):
 	logging.debug("Brt="+str(brt))
 	return brt
 
+def correctLens(img, w, h):
+	distCoeff = np.zeros((4,1),np.float64)
+	# TODO: add your coefficients here!
+	k1 = config.lensCorrValue # negative to remove barrel distortion
+	k2 = 0.0;
+	p1 = 0.0;
+	p2 = 0.0;
+	distCoeff[0,0] = k1;
+	distCoeff[1,0] = k2;
+	distCoeff[2,0] = p1;
+	distCoeff[3,0] = p2;
+	# assume unit matrix for camera
+	cam = np.eye(3,dtype=np.float32)
+	cam[0,2] = w/2.0  # define center x
+	cam[1,2] = h/2.0 # define center y
+	cam[0,0] = 100.        # define focal length x
+	cam[1,1] = 100.        # define focal length y
+	# here the undistortion will be computed
+	dst = cv2.undistort(img,cam,distCoeff)
+	return dst
+	
 def adjustLevels(img):
+	h,w=img.shape[:2]
+	#perform lens correction if selected
+	if config.lensCorr:
+		img=correctLens(img, w, h)
+	#perform rotation if selected
+	if config.rotation:
+		M = cv2.getRotationMatrix2D((w/2,h/2),config.rotationValue,1)
+		img = cv2.warpAffine(img,M,(w,h))
+	#perform cropping if selected
+	if config.cropping:
+		img=img[config.cropT:h-config.cropB, config.cropL:w-config.cropR]
 	return cv2.LUT(img, config.lut)
-	#channels=cv2.split(img)
-	#channels2=[]
-	#for (channel, norm) in zip(channels, config.norms):
-	#	cv2.normalize(channel,channel,norm[0],norm[1], cv2.NORM_MINMAX)
-	#	channels2.append(channel)
-	#return cv2.merge(channels2)
 
 class imgThread (qtcore.QThread):#(threading.Thread):
 	def __init__(self, connection, app):
-		qtcore.QThread.__init__(self, parent=app)#threading.Thread.__init__(self)
+		qtcore.QThread.__init__(self, parent=app)
 		self.threadID = 1
 		self.name = "ImgThread"
 		self.conn = connection
-		cv2.namedWindow(config.imgWinTitle, cv2.WINDOW_NORMAL)
-		cv2.resizeWindow(config.imgWinTitle, config.imgWinWidth, config.imgWinHeight)
-		cv2.moveWindow(config.imgWinTitle, config.imgWinX, config.imgWinY)
 
 	def updateFrameNum(self,i):
 		self.emit(qtcore.SIGNAL("updateFrameNum(int)"), i)
@@ -78,17 +101,13 @@ class imgThread (qtcore.QThread):#(threading.Thread):
 		logging.debug("Done Blending")
 		cvimg=adjustLevels(adjustable_img(cvimg))
 		#cvimg=adjustable_img(cvimg)
-
+		title=thefilename(fnum)
 		if config.wait_for_test:
-			cv2.putText(cvimg, "TEST", (20,900), cv2.FONT_HERSHEY_PLAIN, 10, (0,255,0),4)
-			#config.wait_for_test=False
+			title="TEST"
 		else:
-			#cv2.imwrite(thefilename(fnum),saveable_img(cvimg), [int(cv2.IMWRITE_JPEG_QUALITY), 97])
 			cv2.imwrite(thefilename(fnum),cvimg, [int(cv2.IMWRITE_JPEG_QUALITY), 97])
 		if config.wait_for_test or show:
-			cv2.imshow(config.imgWinTitle, cvimg)
-			#cv2.waitKey()
-		#logging.debug("Displayed")
+			self.showImage(cvimg,title)
 		self.plothist(cvimg)#,True)
 
 	def plothist(self, img, fScale=False):   #perhaps this should be called in a separate thread?
@@ -112,6 +131,10 @@ class imgThread (qtcore.QThread):#(threading.Thread):
 		#logging.debug("Sending Signal")
 		self.emit(qtcore.SIGNAL("plotHistogram(PyQt_PyObject, PyQt_PyObject, float)"), hists, bhist, px)
 		self.emit(qtcore.SIGNAL("displayWashouts(PyQt_PyObject, float, float)"), over, px, avg)
+
+	def showImage(self, im, title="Image"):
+		im2=cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
+		self.emit(qtcore.SIGNAL("displayImg(PyQt_PyObject, QString)"), im2, title)
 
 	def run(self):
 		logging.debug("Imgthread running fn")
@@ -142,7 +165,7 @@ class imgThread (qtcore.QThread):#(threading.Thread):
 					elif imgflag == "t":
 						logging.debug(imgflag)
 						config.prevOn = False
-						cv2.imshow(config.imgWinTitle, 0)
+						self.showImage(cvimg2, "TEST")
 						break
 					else:
 						if imgflag == "s" or imgflag == "b":
@@ -160,18 +183,15 @@ class imgThread (qtcore.QThread):#(threading.Thread):
 							cvimg2=adjustLevels(cvimg)
                             #tmp=image_stream.read(image_len)
 							if config.wait_for_test:
-								cv2.putText(cvimg2, "TEST", (20,900), cv2.FONT_HERSHEY_PLAIN, 10, (0,255,0),4)
+								self.showImage(cvimg2,"TEST")
 							#else:
 							#	process_for_brightness(cvimg)
-							cv2.imshow(config.imgWinTitle, cvimg2)
 							self.plothist(cvimg2)
 							#logging.debug("Single Shown")
 							if not config.wait_for_test:
 								filename = thefilename(config.frame_number)
-								#image_stream.seek(0) #for when writing original non-modified image
 								with open(filename, 'w') as imfile:
-									#imfile.write(image_stream.read(image_len)) original image
-									#cv2.imwrite(filename,saveable_img(cvimg), [int(cv2.IMWRITE_JPEG_QUALITY), 97])
+									self.showImage(cvimg2, filename)
 									cv2.imwrite(filename, cvimg2, [int(cv2.IMWRITE_JPEG_QUALITY), 97])
 								self.updateFrameNum(config.frame_number)
 								config.frame_number+=1
@@ -180,7 +200,7 @@ class imgThread (qtcore.QThread):#(threading.Thread):
 							cvimg=cv2.imdecode(np.fromstring(image_stream.read(image_len), dtype=np.uint8),1)
 							logging.debug(cvimg.dtype)
 							cvimg2=adjustLevels(cvimg)
-							cv2.imshow(config.imgWinTitle, cvimg2)
+							self.showImage(cvimg2,"Live Preview")
 							pframe+=1
 							if pframe>10:
 								pframe=0
@@ -189,13 +209,9 @@ class imgThread (qtcore.QThread):#(threading.Thread):
 							#save image data in variable, dont increment or update display
 							logging.debug('start a')
 							imglist.append(cv2.imdecode(np.fromstring(image_stream.read(image_len), dtype=np.uint8),1))
-							#tmp=image_stream.read(image_len)
 						if imgflag == "b": #the last of several blended images
 							#logging.debug('start read final')
 							imglist.append(cv2.imdecode(np.fromstring(image_stream.read(image_len), dtype=np.uint8),1))
-							
-							#tmp=image_stream.read(image_len)
-							
 							self.updateStatus(str(config.frame_number)+' '+' '.join(map(str,map(quickBrightness,imglist))))
 							thd=threading.Thread(target=self.blendImgList, args=(imglist[:],True,config.frame_number)) #colon in brackets makes new copy of list
 							thd.start() #tried this using multiprocessing, but it hung when processing merge_mertens

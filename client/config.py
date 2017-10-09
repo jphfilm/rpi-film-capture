@@ -59,3 +59,14 @@ imgWinX = 326 #1/2 the max resolution of the pi camera. Changing does not affect
 imgWinHeight= 944
 imgWinY= 0
 
+lensCorr=False
+rotation=False
+cropping=False
+cropL=0
+cropR=0
+cropT=0
+cropB=0
+rotationValue=0.0
+lensCorrX=0.0
+lensCorrX=0.0
+lensCorrValue=0.0

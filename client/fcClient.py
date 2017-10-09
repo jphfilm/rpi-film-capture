@@ -7,7 +7,7 @@ import logging
 #our own modules:
 import config #cross-module globals defined here
 from fcConfig import fcConfigParser	#class to store and retrieve settings
-from fcDialog import fcDialog		#class defining our main window
+from fcDialog import fcDialog, fcImgDialog		#class defining our main window
 from fcImgThread import imgThread	#class and supporting functions supporting image reading
 from PyQt4.QtGui import QApplication
 
@@ -25,11 +25,20 @@ if __name__ == "__main__":
 	if (len(sys.argv)>1 and sys.argv[1] == 'test'):
 		config.test_mode = True
 		logging.debug("Test mode="+str(config.test_mode))
+	if (len(sys.argv)>1 and sys.argv[1] != 'test'):
+		config.server_ip= sys.argv[1]
+		logging.debug("IP-="+config.server_ip)
 	app = QApplication(sys.argv)
 	win = fcDialog()
 	win.config = fcConfigParser()
 	win.show()
-	logging.debug("Win Shown")
+
+	#Below lines new for preview window
+	win2 = fcImgDialog()
+	win2.resize(config.imgWinWidth,config.imgWinHeight)
+	win2.show()
+
+	logging.debug("Windows Shown")
 	#establish thread to listen for images
 	if not config.test_mode:
 		image_socket = socket.socket()
@@ -38,6 +47,7 @@ if __name__ == "__main__":
 		config.ctrl_conn = ctrl_conn
 		imgthread = imgThread(img_conn, app)
 		win.setupThreadingUpdates(imgthread) #sets up slots to allow image thread to update UI		
+		win2.setupThreadingUpdates(imgthread) #New for preview window		
 		imgthread.start()
 		logging.debug("Imgthread started")
 		#win.loadConfigFile(config.initfile) #load initial config

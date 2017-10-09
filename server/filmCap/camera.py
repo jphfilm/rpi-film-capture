@@ -30,7 +30,7 @@ class fcCamera(picamera.PiCamera):
         logging.debug("Cam Initialized")
         #self.awb_mode='off'
         self.stops=1
-
+	self.tmpmode=self.mode
 
     def setDefaults(self):
         #sets camera settings to match that of client on startup.  Set on start of server program and when waiting for client connection
@@ -48,8 +48,8 @@ class fcCamera(picamera.PiCamera):
         self.awb_mode = 'auto' 
 
     def setResize(self, num):
-        #self.capsize=self.resolutions[num]
-        #self.resolution=self.resolutions[num]
+        self.capsize=self.resolutions[num]
+        self.resolution=self.resolutions[num]
         self.res_capture=self.resolutions[num]
         logging.debug("Newres"+str(self.resolution))
         

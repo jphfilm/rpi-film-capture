@@ -5,11 +5,12 @@ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from time import sleep
 import os
 import logging
-#our own files below
+#our own files below 
 import config
 from codes import *
 from fcClientgui import *		#Our main dialog class, created in QT Designer 
 		#and translated to python via "pyuic4 fcClientgui.ui > fcClientgui.py" 
+import cv2
 
 colors = ('b','g','r')	#used by histogram plotter
 
@@ -23,7 +24,32 @@ def adj_for_size(pixcount, px): #used by histogram calculation
 	return "{0:.2f}".format(float(pixcount/px*100))
 
 
+class fcImgDialog(QDialog):
+	def __init__(self, parent=None):
+		super(fcImgDialog, self).__init__(parent)
+		self.setWindowTitle("Pi Film Capture:")
+		self.mQImage = 0
+		
+	def displayImg(self, cvimg, title):
+		logging.debug("DisplayImg")
+		self.setWindowTitle("Pi Film Capture: "+title)
+		self.cvImage=cvimg
+		height, width, byteValue=self.cvImage.shape
+		byteValue=byteValue*width
+		self.mQImage = QImage(self.cvImage, width, height, byteValue, QImage.Format_RGB888)		
+		self.update()
 
+	def paintEvent(self, QPaintEvent):
+		logging.debug("paintEvent")
+		painter = QPainter()
+		painter.begin(self)
+		if self.mQImage != 0:
+			painter.drawImage(0, 0, QImage.scaled(self.mQImage, self.width(), self.height(), Qt.KeepAspectRatio))
+		painter.end()
+
+	def setupThreadingUpdates(self, imgthread):
+		logging.debug("Setting up threading updates for img win")
+		self.connect(imgthread, QtCore.SIGNAL("displayImg(PyQt_PyObject, QString)"), self.displayImg)
 
 class fcDialog(QDialog, Ui_Form1):
 	def __init__(self, parent=None):
@@ -59,22 +85,10 @@ class fcDialog(QDialog, Ui_Form1):
 
 #TAB CHANGE CONROLS
 
-#Changing 12/5/16 to not have tabs set mode
 	def tabChanged(self,tab):
-#		if tab == 0:
-#			if config.captureOn:
-#				config.captureOn = False
-#			sendCtrl(CAPTURE_OFF) #to stop capture mode
-#			if self.prevCheckBox.isChecked():
-#				sendCtrl(PREVIEW_ON)
 		if tab == 1:
 			if not config.captureOn:
 				self.autoExpCheckBox.setChecked(False)
-#				sendCtrl(CAPTURE_ON) #to start capture mode
-#				#sendCtrl(SPEED+str(self.driveSpeed.value()))
-#				config.captureOn = True
-#				config.wait_for_test=True  #switching to capture mode sets the exposure and sends a test pic
-		#if tab = 2 (advanced) we leave things at current setting
 #SETUP CONTROLS	
 	def motorFwd(self):
 		sendCtrl(MOTOR_FWD)
@@ -104,9 +118,6 @@ class fcDialog(QDialog, Ui_Form1):
 			config.captureOn = True
 			config.wait_for_test=True
 			self.tabWidget.setTabEnabled(1,True)
-#		sendCtrl(PREVIEW_ON if isOn else PREVIEW_OFF)
-			#this tells the client to stop sending previews.  Client will send a "t" character
-			#to our image thread, which will then set prevOn to False and stop reading from the stream.
 	def setAutoExp(self, isOn):
 		sendCtrl(AUTOEXP_ON if isOn else AUTOEXP_OFF)
 	def setX(self,xval):
@@ -197,7 +208,7 @@ class fcDialog(QDialog, Ui_Form1):
 	def capFrameRev(self):
 		sendCtrl(CAP_FRAME_REV)
 	def capFrameAdv10(self):
-		sendCtrl(CAP_FRAME_ADV+"10")
+		sendCtrl(CAP_FRAME_ADV+"10") 
 	def capFrameRev10(self):
 		sendCtrl(CAP_FRAME_REV+"10")
 
@@ -353,7 +364,8 @@ class fcDialog(QDialog, Ui_Form1):
 		blankLimit=limit
 		return limit
 	def closeEvent(self, *args, **kwargs):
-		super(fcDialog, self).closeEvent(*args, **kwargs)
+		app = QApplication.instance()
+		app.closeAllWindows()
 		sendCtrl(MOTOR_STOP)
 		sendCtrl(LIGHT_OFF)
 		if config.prevOn:
@@ -415,3 +427,26 @@ class fcDialog(QDialog, Ui_Form1):
 			expDiff=self.stopsBox.value()/2.0
 			return ss*(2**expDiff)
 		
+#Post Processing Settings
+	def setLensCorr(self, on):
+		config.lensCorr=on
+	def setRotation(self, on):
+		config.rotation=on
+	def setCrop(self, on):
+		config.cropping=on
+	def setLensCorrValue(self, val):
+		config.lensCorrValue=val
+	def setLensCorrX(self, val):
+		config.lensCorrX=val
+	def setLensCorrY(self, val):
+		config.lensCorrY=val
+	def setRotationValue(self, val):
+		config.rotationValue=val
+	def setCropL(self, val):
+		config.cropL=val
+	def setCropR(self, val):
+		config.cropR=val
+	def setCropT(self, val):
+		config.cropT=val
+	def setCropB(self, val):
+		config.cropB=val

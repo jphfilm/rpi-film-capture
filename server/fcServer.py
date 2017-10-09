@@ -22,11 +22,11 @@ brt_max_double = 170
 brt_min_single = 70
 brt_min_double = 50
 
-calibrate_motor_every = 50
+calibrate_motor_every = 100
 framecount = 0
 
 missed_frames = 0
-img_format = 'jpeg'  #Works with other formats, but clarge sizes make it much slower.
+img_format = 'jpeg'  #Works with other formats, but large sizes make it much slower.
 jpeg_quality = 100
 
 auto_advance = False #this determines whether we advance after each photo
@@ -73,15 +73,30 @@ def processCmd(cmdstr):
 
     #preview settings
     if cmd == c.MOTOR_FWD:
-        fc.motor_fwd(30)
+		cam.tmpmode=cam.mode
+		if cam.tmpmode==cam.CAPTURING:
+			cam.mode=cam.OFF
+		fc.motor_fwd(50)
     elif cmd == c.MOTOR_REV:
-        fc.motor_rev(30)
+		cam.tmpmode=cam.mode
+		if cam.tmpmode==cam.CAPTURING:
+			cam.mode=cam.OFF
+		fc.motor_rev(50)
     elif cmd == c.MOTOR_FFD:
-        fc.motor_fwd(100)
+		cam.tmpmode=cam.mode
+		if cam.tmpmode==cam.CAPTURING:
+			cam.mode=cam.OFF
+		fc.motor_fwd(100)
     elif cmd == c.MOTOR_FREV:
-        fc.motor_rev(100)
+		cam.tmpmode=cam.mode
+		if cam.tmpmode==cam.CAPTURING:
+			cam.mode=cam.OFF
+		fc.motor_rev(100)
     elif cmd == c.MOTOR_STOP:
-        fc.motor_stop()
+		fc.motor_stop()
+		cam.mode=cam.tmpmode
+
+
     elif cmd == c.LIGHT_OFF:
         fc.light_off()
     elif cmd == c.LIGHT_ON:
@@ -208,8 +223,6 @@ def processCmd(cmdstr):
         fc.motor.revFrame(num)  
         cam.mode=cam.CAPTURING
         take_a_photo(0) #take a single photo and stream it.
-    elif cmd == c.SET_MOTOR_SPEED:
-        fc.motor_set_speed(int(setting))
 
     #smart capture settings
     elif cmd -- '^':
@@ -235,11 +248,15 @@ def take_a_photo(channel):  #callback triggered by frame advance setting GPIO pi
     #sleep(0.03)  #wait before checking status of trigger, to avoid false triggers
     logging.debug("Trigger "+str(GPIO.input(fc.trigger_pin))+str(cam.mode))
     if (((channel == 0) or (GPIO.input(fc.trigger_pin) == 1)) and cam.mode==cam.CAPTURING):  #only take this photo if we're in capture mode
-        logging.debug("Trigger Valid")
+        logging.debug("Trigger Valid Channel "+str(channel)+" Trigger Pin "+str(GPIO.input(fc.trigger_pin)))
         #if channel!=0: #photo hasn't been triggered, so we're not monitoring it
+        while cap_event.is_set(): #Here, we're waiting for the motor to finish winding, so the setup is still for the pictue. 
+            sleep(.05)		#You may be able to remove this and speed up captures by starting the photo immediately after trigger, while the
+							#motor is still moving.  However, I found that motor vibration led to 'jello' in my captures
+							#when capuring single frames using still mode.  Test your results before removing.
         camera_busy()
         i=1
-        if True: #channel == 0:  #this signifies a non-triggered photo, so we need to manually set the initial shutter speed
+        if ((channel == 0) or (cam.bracketing >1)): #True:  #this signifies a non-triggered photo, so we need to manually set the initial shutter speed
             cam.shutter_speed = bracketSS(cam.stops, i, cam.bracketing, cam.ss)
             sleep(2/cam.framerate)
         while i<= cam.bracketing:
@@ -343,7 +360,7 @@ try:
     fc = filmCap.fcControl()
     logging.debug("Control Object Created")
     #add callback for triggering pictures
-    GPIO.add_event_detect(fc.trigger_pin, GPIO.RISING, callback=take_a_photo, bouncetime = 25)
+    GPIO.add_event_detect(fc.trigger_pin, GPIO.RISING, callback=take_a_photo, bouncetime = 25)  #Can be 
     logging.debug("GPIO Setup Complete")
 
 
