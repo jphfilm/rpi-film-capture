@@ -50,18 +50,18 @@ class fcConfigParser(ConfigParser.SafeConfigParser):
 			#Auto speed settings
 		ui.resolution.setCurrentIndex(ui.setCapRes(self.getint(sec,'resolution')))
 		
-		sec='Smartcap'
-		ui.blankFrameLimit.setValue(ui.setBlankLimit(self.getint(sec,'blanklimit')))
-		ui.deltaBrt.setValue(self.getint(sec,'deltabrt'))
-		ui.deltaSS.setValue(self.getint(sec,'deltass'))
-		ui.last4init.setValue(self.getint(sec,'last4init'))
-		ui.initFrames.setValue(self.getint(sec,'initframes'))
-		ui.last4prev.setValue(self.getint(sec,'last4prev'))
-		ui.prevFrames.setValue(self.getint(sec,'prevframes'))
-		ui.initPct.setValue(self.getint(sec,'initpct'))
-		ui.initAction.setCurrentIndex(self.getint(sec,'initaction'))
-		ui.prevPct.setValue(self.getint(sec,'prevpct'))
-		ui.prevAction.setCurrentIndex(self.getint(sec,'prevaction'))
+#		sec='Smartcap'
+#		ui.blankFrameLimit.setValue(ui.setBlankLimit(self.getint(sec,'blanklimit')))
+#		ui.deltaBrt.setValue(self.getint(sec,'deltabrt'))
+#		ui.deltaSS.setValue(self.getint(sec,'deltass'))
+#		ui.last4init.setValue(self.getint(sec,'last4init'))
+#		ui.initFrames.setValue(self.getint(sec,'initframes'))
+#		ui.last4prev.setValue(self.getint(sec,'last4prev'))
+#		ui.prevFrames.setValue(self.getint(sec,'prevframes'))
+#		ui.initPct.setValue(self.getint(sec,'initpct'))
+#		ui.initAction.setCurrentIndex(self.getint(sec,'initaction'))
+#		ui.prevPct.setValue(self.getint(sec,'prevpct'))
+#		ui.prevAction.setCurrentIndex(self.getint(sec,'prevaction'))
 
 	def updateConfigFromUI(self,ui):
 		if not self.has_section('Camera'):
@@ -101,18 +101,18 @@ class fcConfigParser(ConfigParser.SafeConfigParser):
 		self.set(sec,'bracketing',	str(ui.bracketing.value()))
 		self.set(sec,'resolution',	str(ui.resolution.currentIndex()))
 
-		sec='Smartcap'
-		self.set(sec,'blanklimit',	str(ui.blankFrameLimit.value()))
-		self.set(sec,'deltabrt',	str(ui.deltaBrt.value()))
-		self.set(sec,'deltass',		str(ui.deltaSS.value()))
-		self.set(sec,'last4init',	str(ui.last4init.value()))
-		self.set(sec,'initframes',	str(ui.initFrames.value()))
-		self.set(sec,'last4prev',	str(ui.last4prev.value()))
-		self.set(sec,'prevframes',	str(ui.prevFrames.value()))
-		self.set(sec,'initpct',		str(ui.initPct.value()))
-		self.set(sec,'prevpct',		str(ui.prevPct.value()))
-		self.set(sec,'initaction',	str(ui.initAction.currentIndex()))
-		self.set(sec,'prevaction',	str(ui.prevAction.currentIndex()))
+#		sec='Smartcap'
+#		self.set(sec,'blanklimit',	str(ui.blankFrameLimit.value()))
+#		self.set(sec,'deltabrt',	str(ui.deltaBrt.value()))
+#		self.set(sec,'deltass',		str(ui.deltaSS.value()))
+#		self.set(sec,'last4init',	str(ui.last4init.value()))
+#		self.set(sec,'initframes',	str(ui.initFrames.value()))
+#		self.set(sec,'last4prev',	str(ui.last4prev.value()))
+#		self.set(sec,'prevframes',	str(ui.prevFrames.value()))
+#		self.set(sec,'initpct',		str(ui.initPct.value()))
+#		self.set(sec,'prevpct',		str(ui.prevPct.value()))
+#		self.set(sec,'initaction',	str(ui.initAction.currentIndex()))
+#		self.set(sec,'prevaction',	str(ui.prevAction.currentIndex()))
 		
 		
 		
