@@ -4,14 +4,14 @@
 A project to perform frame-by-frame capture of 8mm and 16mm films using a raspberry pi, the pi camera, and a modified movie projector. 
 <img src="images/super8setup.jpg" width="480">
 
-**UPDATE 10/23/2017: Several significant updates are coming soon, which may be worth waiting for if you're just startingout. If you're looking into this project, you may want to wait check back in a week or so, when I expect these to be available.  These include:
+** UPDATE 10/23/2017: Several significant updates are coming soon, which may be worth waiting for if you're just startingout. If you're looking into this project, you may want to wait check back in a week or so, when I expect these to be available.  These include:
 * Port to Python 3 and Qt5 (currently uses python 2.7 and qt4)
 * Redesigned UI to reduce need for frequent switching between panels
 * Executables for linux, to avoid the complicated install/compilation process currently necessary (hopefully OSX & windows coming later)
 * Flat-field correction and distortion correction to compensate for effects introduced by non-stock lenses
 * Improved documentation
 
-**Update: If you're implementing this and want suggestions/advice from other users, consider joining the [google group](https://groups.google.com/forum/#!forum/rpi-film-capture)
+** Update: If you're implementing this and want suggestions/advice from other users, consider joining the [google group](https://groups.google.com/forum/#!forum/rpi-film-capture)
 
 Design:
 * Film transport is via a repurposed projector (8mm, Super8, or 16mm), driven by a stepper motor. 
