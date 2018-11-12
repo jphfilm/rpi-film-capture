@@ -59,6 +59,11 @@ imgWinX = 326 #1/2 the max resolution of the pi camera. Changing does not affect
 imgWinHeight= 944
 imgWinY= 0
 
+antiVignetting=False
+calibrationImages=[]
+flatFieldImg=np.array([])
+flatFieldCalibration=False
+
 lensCorr=False
 rotation=False
 cropping=False

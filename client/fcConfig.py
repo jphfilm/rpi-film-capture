@@ -1,8 +1,8 @@
-import ConfigParser
+import configparser
 from time import sleep
 
 #A module to save settings to (and restore them from) a config file.
-class fcConfigParser(ConfigParser.SafeConfigParser):
+class fcConfigParser(configparser.SafeConfigParser):
 	def updateUIfromConfig(self,ui):
 		if not self.has_section('Camera'):
 			self.add_section('Camera')
