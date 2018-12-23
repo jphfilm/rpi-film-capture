@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>histwin</class>
+ <widget class="QDialog" name="histwin">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>324</width>
+    <height>264</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Pi Film Capture</string>
+  </property>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>30</y>
+     <width>321</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="histogram"/>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>311</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="pctOverB">
+    <property name="geometry">
+     <rect>
+      <x>125</x>
+      <y>3</y>
+      <width>41</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white; color: blue</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="pctOverR">
+    <property name="geometry">
+     <rect>
+      <x>35</x>
+      <y>3</y>
+      <width>41</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white; color: red</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="pctOverG">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>3</y>
+      <width>41</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white; color: green</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>168</x>
+      <y>3</y>
+      <width>31</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>%Lo:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="pctUnder">
+    <property name="geometry">
+     <rect>
+      <x>198</x>
+      <y>3</y>
+      <width>41</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="pctAvg">
+    <property name="geometry">
+     <rect>
+      <x>271</x>
+      <y>4</y>
+      <width>41</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_19">
+    <property name="geometry">
+     <rect>
+      <x>241</x>
+      <y>1</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Avg:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_35">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>2</y>
+      <width>31</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>%Hi:</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+ <slots>
+  <signal>gotFolder(str)</signal>
+  <signal>frameCaptured(int)</signal>
+  <slot>printInt(int)</slot>
+  <slot>motorFwd()</slot>
+  <slot>motorStop()</slot>
+  <slot>motorRev()</slot>
+  <slot>motorSpeed(int)</slot>
+  <slot>lightSet(bool)</slot>
+  <slot>frameUp()</slot>
+  <slot>frameDown()</slot>
+  <slot>frameLeft()</slot>
+  <slot>frameRight()</slot>
+  <slot>zoomIn()</slot>
+  <slot>zoomOut()</slot>
+  <slot>captureStart()</slot>
+  <slot>captureEnd()</slot>
+  <slot>capturePauseToggle()</slot>
+  <slot>chooseFolder()</slot>
+  <slot>setBlend(bool)</slot>
+  <slot>setEndFrame(int)</slot>
+  <slot>setStartFrame(int)</slot>
+  <slot>setBlendStops(double)</slot>
+  <slot>setGainBlue(int)</slot>
+  <slot>setGainRed(int)</slot>
+  <slot>previewSet(bool)</slot>
+  <slot>setDrc(QString)</slot>
+  <slot>loadConfig()</slot>
+  <slot>saveConfig()</slot>
+  <slot>setBright(int)</slot>
+  <slot>setSharpness(int)</slot>
+  <slot>setHFlip(bool)</slot>
+  <slot>setVFlip(bool)</slot>
+  <slot>setSaturation(int)</slot>
+  <slot>setBW(bool)</slot>
+  <slot>setBlankDetect(bool)</slot>
+  <slot>setBlankLimit(int)</slot>
+  <slot>setExposureDown()</slot>
+  <slot>setExposureUp()</slot>
+  <slot>setExposureValue()</slot>
+  <slot>setExposure()</slot>
+  <slot>takeTestPhoto()</slot>
+  <slot>resetBright()</slot>
+  <slot>resetContrast()</slot>
+  <slot>resetGainBlue()</slot>
+  <slot>resetGainRed()</slot>
+  <slot>resetSaturation()</slot>
+  <slot>tabChanged(int)</slot>
+  <slot>saveCurrentConfig()</slot>
+  <slot>setContrast(int)</slot>
+  <slot>autowhite(bool)</slot>
+  <slot>setZoom(int)</slot>
+  <slot>setX(int)</slot>
+  <slot>setY(int)</slot>
+  <slot>setDriveSpeed(int)</slot>
+  <slot>setBlend(int)</slot>
+  <slot>setStillPort(bool)</slot>
+  <slot>colorSet()</slot>
+  <slot>setAWBmode(QString)</slot>
+  <slot>setEV(int)</slot>
+  <slot>saveInits()</slot>
+  <slot>setCapRes(int)</slot>
+  <slot>motorffd()</slot>
+  <slot>motorfrev()</slot>
+  <slot>capFrameAdv()</slot>
+  <slot>capFrameRev()</slot>
+  <slot>capFrameAdv10()</slot>
+  <slot>capFrameRev10()</slot>
+  <slot>setAutoExp(bool)</slot>
+  <slot>capturePause(bool)</slot>
+  <slot>setAdjLowR(int)</slot>
+  <slot>setAdjHiR(int)</slot>
+  <slot>setAdjLowG(int)</slot>
+  <slot>setAdjHiG(int)</slot>
+  <slot>setAdjLowB(int)</slot>
+  <slot>setAdjHiB(int)</slot>
+  <slot>setLensCorr(bool)</slot>
+  <slot>setRotation(bool)</slot>
+  <slot>setCrop(bool)</slot>
+  <slot>setLensCorrValue(double)</slot>
+  <slot>setLensCorrX(double)</slot>
+  <slot>setLensCorrY(double)</slot>
+  <slot>setRotationValue(double)</slot>
+  <slot>setCropL(int)</slot>
+  <slot>setCropR(int)</slot>
+  <slot>setCropT(int)</slot>
+  <slot>setCropB(int)</slot>
+  <slot>getBlankImage()</slot>
+  <slot>setVignetting(bool)</slot>
+ </slots>
+</ui>
